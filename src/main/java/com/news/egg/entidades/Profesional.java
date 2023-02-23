@@ -12,7 +12,7 @@ public class Profesional extends Usuario {
     private List disponibilidad;//esto va relacionado con calendario
     private int idespecialidad;
 
-   
+   //Holi prueba
     //Constructores
 
     public Profesional() {
