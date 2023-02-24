@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -12,14 +13,16 @@ public class Consulta {
     
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE) 
-    private int idConsulta;
+    private Long idConsulta;
     
     private boolean status;
+    @OneToOne
     private Turno turno;
-       
+    @OneToOne   
     private Profesional profesional;
     private String diagnostico;
     private Date fechaConsulta;
+    @OneToOne
     private Paciente paciente;
  
     //Constructores
@@ -27,7 +30,7 @@ public class Consulta {
     public Consulta() {
     }
 
-    public Consulta(int idConsulta, boolean status, Turno turno, Profesional profesional, String diagnostico, Date fechaConsulta, Paciente paciente) {
+    public Consulta(Long idConsulta, boolean status, Turno turno, Profesional profesional, String diagnostico, Date fechaConsulta, Paciente paciente) {
         this.idConsulta = idConsulta;
         this.status = status;
         this.turno = turno;
@@ -39,11 +42,11 @@ public class Consulta {
     
     //Getters y Setters
 
-    public int getIdConsulta() {
+    public Long getIdConsulta() {
         return idConsulta;
     }
 
-    public void setIdConsulta(int idConsulta) {
+    public void setIdConsulta(Long idConsulta) {
         this.idConsulta = idConsulta;
     }
 
