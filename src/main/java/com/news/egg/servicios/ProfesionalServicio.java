@@ -1,18 +1,18 @@
 
 package com.news.egg.servicios;
 
-import com.news.egg.entidades.Profesional;
+/*import com.news.egg.entidades.Profesional;
 import com.news.egg.excepciones.MiException;
 import com.news.egg.repositorios.ProfesionalRepositorio;
 import com.news.egg.repositorios.UsuarioRepositorio;
 import javax.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;*/
 
 
 
 
 public class ProfesionalServicio {
-    @Autowired
+    /*@Autowired
     private ProfesionalRepositorio profesionalRepositorio;
     
     @Autowired
@@ -25,5 +25,5 @@ public class ProfesionalServicio {
         profesional.setHonorario(honorario);
 
         usuarioRepositorio.save(profesional);
-    }
+    }*/
 }
