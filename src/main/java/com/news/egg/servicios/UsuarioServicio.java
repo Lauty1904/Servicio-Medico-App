@@ -1,7 +1,7 @@
 
 package com.news.egg.servicios;
 
-import com.news.egg.entidades.Usuario;
+/*import com.news.egg.entidades.Usuario;
 import com.news.egg.enumeraciones.Rol;
 import com.news.egg.excepciones.MiException;
 import com.news.egg.repositorios.ProfesionalRepositorio;
@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UserDetailsService;
 
-@Service
+@Service*/
 public class UsuarioServicio  { //hay que agreegar dps implements UserDetailsService
-   @Autowired
+   /*@Autowired
    private UsuarioRepositorio usuarioRepositorio;
    
    @Autowired
@@ -37,15 +37,15 @@ public class UsuarioServicio  { //hay que agreegar dps implements UserDetailsSer
         usuario.setApellido(apellido);
         usuario.setDni(dni);
         usuario.setEmail(email);
-        usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+        //usuario.setPassword(new BCryptPasswordEncoder().encode(password));
         usuario.setRol(Rol.valueOf(rol));
        
         if (rol.equals("MEDICO")){            
-            profesionalServicio.registrar(honorario);     
+            //profesionalServicio.registrar(honorario);     
         } 
         
         if (rol.equals("PACIENTE")){            
-            pacienteServicio.registrar(obraSocial, nacimiento, edad, genero);     
+            //pacienteServicio.registrar(obraSocial, nacimiento, edad, genero);     
         } 
   
             usuarioRepositorio.save(usuario);
@@ -95,7 +95,7 @@ public class UsuarioServicio  { //hay que agreegar dps implements UserDetailsSer
     if (!password.equals(password2)){
         throw new MiException("Las contrasenas deben ser iguales");
     }
- }
+ }*/
 
 }
     
