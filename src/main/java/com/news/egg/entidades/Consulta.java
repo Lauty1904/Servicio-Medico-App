@@ -13,33 +13,27 @@ public class Consulta {
     
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE) 
-    private Long idConsulta;
+    private Long idConsulta;  
     
-    private boolean status;
     @OneToOne
     private Turno turno;
-    @OneToOne   
-    private Profesional profesional;
+    
     private String diagnostico;
-    private Date fechaConsulta;
-    @OneToOne
-    private Paciente paciente;
+   private boolean status;
  
     //Constructores
 
     public Consulta() {
     }
 
-    public Consulta(Long idConsulta, boolean status, Turno turno, Profesional profesional, String diagnostico, Date fechaConsulta, Paciente paciente) {
+    public Consulta(Long idConsulta, Turno turno, String diagnostico, boolean status) {
         this.idConsulta = idConsulta;
-        this.status = status;
         this.turno = turno;
-        this.profesional = profesional;
         this.diagnostico = diagnostico;
-        this.fechaConsulta = fechaConsulta;
-        this.paciente = paciente;
+        this.status = status;
     }
-    
+
+      
     //Getters y Setters
 
     public Long getIdConsulta() {
@@ -50,28 +44,12 @@ public class Consulta {
         this.idConsulta = idConsulta;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
     public Turno getTurno() {
         return turno;
     }
 
     public void setTurno(Turno turno) {
         this.turno = turno;
-    }
-
-    public Profesional getProfesional() {
-        return profesional;
-    }
-
-    public void setProfesional(Profesional profesional) {
-        this.profesional = profesional;
     }
 
     public String getDiagnostico() {
@@ -82,21 +60,13 @@ public class Consulta {
         this.diagnostico = diagnostico;
     }
 
-    public Date getFechaConsulta() {
-        return fechaConsulta;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setFechaConsulta(Date fechaConsulta) {
-        this.fechaConsulta = fechaConsulta;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-    
     
 }

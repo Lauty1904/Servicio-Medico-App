@@ -12,12 +12,16 @@ public class Turno {
     @GeneratedValue(strategy=GenerationType.SEQUENCE) 
     private Long IdTurno;
     private boolean status;
+    
     @OneToOne
     private Profesional profesional;
+    
     @OneToOne
     private Paciente paciente;
+    
     private int calificacion;
-    //private Calendario calendario;
+    
+    
     
     //Constructores
 
