@@ -38,7 +38,7 @@ public class ProfesionalServicio {
         profesional.setRol(Rol.MEDICO);
         
         profesional.setHonorario(honorario);
-        profesional.setEspecialidad(Especialidad.PEDIATRIA);//ver de CAMBIAR los enums por una tabla aparte con Id de especialidad y nombre
+        profesional.setEspecialidad(Especialidad.Pediatria);//ver de CAMBIAR los enums por una tabla aparte con Id de especialidad y nombre
         
         profesionalRepositorio.save(profesional);
 
@@ -77,7 +77,7 @@ public class ProfesionalServicio {
             profesional.setRol(Rol.MEDICO);
         
             profesional.setHonorario(honorario);
-            profesional.setEspecialidad(Especialidad.PEDIATRIA);//cambiar desde html - Ver de cambiar este ENUM por una tabla de especialidades
+            profesional.setEspecialidad(Especialidad.Pediatria);//cambiar desde html - Ver de cambiar este ENUM por una tabla de especialidades
 
             profesionalRepositorio.save(profesional);
   
