@@ -2,12 +2,13 @@ package com.news.egg.entidades;
 
 import com.news.egg.enumeraciones.Especialidad;
 import com.news.egg.enumeraciones.Rol;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 @Entity
-public class Profesional extends Usuario {
+public class Profesional extends Usuario implements Serializable {
 
     private double honorario;
 
@@ -17,7 +18,7 @@ public class Profesional extends Usuario {
     private Especialidad especialidad;
 
     //private Calendario disponibilidad;//esto va relacionado con calendario
-    private Especialidad especialidad;
+    
    
     //Constructores
 
@@ -84,12 +85,5 @@ public class Profesional extends Usuario {
         this.especialidad = especialidad;
     }
 
-    public Especialidad getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(Especialidad especialidad) {
-        this.especialidad = especialidad;
-    }
 
 }
