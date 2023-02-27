@@ -21,6 +21,7 @@ public class Turno {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long IdTurno;
+
     private boolean status = false;
     private int calificacion;
 
@@ -40,9 +41,24 @@ public class Turno {
     @JoinColumn(name = "Profesional", nullable = false)
     private Profesional profesional;
 
+
+    private boolean status;
+    
+    @OneToOne
+    private Profesional profesional;
+    
+
     @OneToOne
     @JoinColumn(name = "Paciente", nullable = false)
     private Paciente paciente;
+
+    
+    private int calificacion;
+    
+    
+    
+    //Constructores
+
 
     public Turno() {
     }
