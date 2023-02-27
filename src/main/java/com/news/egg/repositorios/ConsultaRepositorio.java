@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 public interface ConsultaRepositorio extends JpaRepository <Consulta, Long> {
       
     @Query("SELECT c FROM Consulta c WHERE c.id = :id")
-    public Consulta buscarPorId(@Param("id") Long id);
+    public Consulta buscarPorId(@Param("id") Long IdConsulta);
     
 }
