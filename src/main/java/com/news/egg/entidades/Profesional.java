@@ -4,6 +4,17 @@ import com.news.egg.enumeraciones.Especialidad;
 import com.news.egg.enumeraciones.Rol;
 import java.io.Serializable;
 import javax.persistence.Entity;
+
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "Profesional")
+public class Profesional extends Usuario {
+    
+    private double honorario;
+    private int disponibilidad;//esto va relacionado con calendario
+    //javi hacé enum especialidad
+
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
@@ -23,6 +34,7 @@ public class Profesional extends Usuario implements Serializable {
     //Constructores
 
 
+
     //Constructores
     public Profesional() {
     }
@@ -34,8 +46,13 @@ public class Profesional extends Usuario implements Serializable {
         this.especialidad = especialidad;
     }
 
+
+    public Profesional(double honorario, int disponibilidad, Long id, String password, String password2, String email, String nombre, String apellido, int dni, String domicilio, int numeroTelefono, Rol rol) {
+        super(id, password, password2, email, nombre, apellido, dni, domicilio, numeroTelefono, rol);
+
     public Profesional(double honorario, int disponibilidad, Especialidad especialidad, Long id, String password, String password2, String email, String nombre, String apellido, Integer dni, String domicilio, Rol rol) {
         super(id, password, password2, email, nombre, apellido, dni, domicilio, rol);
+
         this.honorario = honorario;
         this.disponibilidad = disponibilidad;
         this.especialidad = especialidad;
@@ -55,9 +72,13 @@ public class Profesional extends Usuario implements Serializable {
         this.especialidad = especialidad;
     }
 
+
+
+
     
     
     //Getters y Setters
+
 
 
     //Getters y Setters
