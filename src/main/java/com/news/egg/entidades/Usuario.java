@@ -1,39 +1,36 @@
 package com.news.egg.entidades;
 
 import com.news.egg.enumeraciones.Rol;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-@Entity
+@MappedSuperclass
 public class Usuario {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String password;
     private String password2;
     private String email;
-
-        
     private String nombre;
     private String apellido;
     private int dni;
     private String domicilio;
-    
+    private int numeroTelefono;
+
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
-    
-    //Constructores
     public Usuario() {
     }
 
-    public Usuario(Long id, String password, String password2, String email, String nombre, String apellido, Integer dni, String domicilio, Rol rol) {
+    public Usuario(Long id, String password, String password2, String email, String nombre, String apellido, int dni, String domicilio, int numeroTelefono, Rol rol) {
         this.id = id;
         this.password = password;
         this.password2 = password2;
@@ -42,10 +39,9 @@ public class Usuario {
         this.apellido = apellido;
         this.dni = dni;
         this.domicilio = domicilio;
+        this.numeroTelefono = numeroTelefono;
         this.rol = rol;
     }
-
-    //Getters y Setters
 
     public Long getId() {
         return id;
@@ -118,6 +114,13 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-   
-    
+
+    public int getNumeroTelefono() {
+        return numeroTelefono;
+    }
+
+    public void setNumeroTelefono(int numeroTelefono) {
+        this.numeroTelefono = numeroTelefono;
+    }
+
 }
