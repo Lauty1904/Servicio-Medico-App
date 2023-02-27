@@ -28,8 +28,6 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
-    
-    //Constructores
     public Usuario() {
     }
 
@@ -44,8 +42,6 @@ public class Usuario {
         this.domicilio = domicilio;
         this.rol = rol;
     }
-
-    //Getters y Setters
 
     public Long getId() {
         return id;

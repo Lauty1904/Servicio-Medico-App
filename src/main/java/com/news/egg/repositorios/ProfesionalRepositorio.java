@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface ProfesionalRepositorio extends JpaRepository<Profesional, Long>{
+public interface ProfesionalRepositorio extends JpaRepository <Profesional, Long>{
     
     @Query ("SELECT p FROM Profesional p WHERE p.email = :email")
     public Profesional buscarPorEmail(@Param("email")String email);
