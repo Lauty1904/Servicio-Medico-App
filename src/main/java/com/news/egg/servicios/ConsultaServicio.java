@@ -1,8 +1,6 @@
 package com.news.egg.servicios;
 
 import com.news.egg.entidades.Consulta;
-import com.news.egg.entidades.Paciente;
-import com.news.egg.entidades.Profesional;
 import com.news.egg.entidades.Turno;
 import com.news.egg.excepciones.MiException;
 import com.news.egg.repositorios.ConsultaRepositorio;
@@ -13,7 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-public class ConsultaServicio extends Turno {
+public class ConsultaServicio {
     
     @Autowired
     private TurnoRepositorio turnoRepositorio;
@@ -22,10 +20,9 @@ public class ConsultaServicio extends Turno {
     private ConsultaRepositorio consultaRepositorio;
 
     @Transactional
-    public void registrarConsulta (Long IdConsulta, String diagnostico, Turno turno, Paciente paciente, Profesional profesional) throws MiException {
+    public void registrarConsulta (String diagnostico, Turno turno) throws MiException {
 
         Consulta consulta = new Consulta();
-        consulta.setIdConsulta(IdConsulta);
         consulta.setTurno(turno);
         consulta.setDiagnostico(diagnostico);
         consulta.setStatus(true);

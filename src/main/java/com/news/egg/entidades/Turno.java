@@ -1,6 +1,7 @@
 package com.news.egg.entidades;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,30 +41,18 @@ public class Turno {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Profesional", nullable = false)
     private Profesional profesional;
-
-
-    private boolean status;
     
-    @OneToOne
-    private Profesional profesional;
-    
-
     @OneToOne
     @JoinColumn(name = "Paciente", nullable = false)
     private Paciente paciente;
 
-    
-    private int calificacion;
-    
-    
-    
     //Constructores
 
 
     public Turno() {
     }
 
-    public Turno(Long IdTurno, boolean status, int calificacion, Date fechaTurno, Date horaTurno, Date fechaAlta, Profesional profesional, Paciente paciente) {
+    public Turno(Long IdTurno, boolean status, int calificacion, Date fechaTurno, Date horaTurno, Date fechaAlta, Profesional profesional, Paciente pacientes) {
         this.IdTurno = IdTurno;
         this.status = status;
         this.calificacion = calificacion;
@@ -71,7 +60,7 @@ public class Turno {
         this.horaTurno = horaTurno;
         this.fechaAlta = fechaAlta;
         this.profesional = profesional;
-        this.paciente = paciente;
+        this.paciente = pacientes;
     }
 
     public Long getIdTurno() {
@@ -137,6 +126,5 @@ public class Turno {
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
-
     
 }
