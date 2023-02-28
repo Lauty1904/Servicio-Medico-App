@@ -1,33 +1,25 @@
 package com.news.egg.entidades;
 
-import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import org.hibernate.annotations.GenericGenerator;
+
 
 @Entity
-public class Consulta {
-    
-    @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE) 
-    private Long idConsulta;  
-    
+public class Consulta extends Turno {
+   
     @OneToOne
     private Turno turno;
     
     private String diagnostico;
-   private boolean status;
+    private boolean status;
  
     //Constructores
 
     public Consulta() {
     }
 
-    public Consulta(Long idConsulta, Turno turno, String diagnostico, boolean status) {
-        this.idConsulta = idConsulta;
+    public Consulta (Turno turno, String diagnostico, boolean status) {
+
         this.turno = turno;
         this.diagnostico = diagnostico;
         this.status = status;
@@ -35,14 +27,6 @@ public class Consulta {
 
       
     //Getters y Setters
-
-    public Long getIdConsulta() {
-        return idConsulta;
-    }
-
-    public void setIdConsulta(Long idConsulta) {
-        this.idConsulta = idConsulta;
-    }
 
     public Turno getTurno() {
         return turno;
@@ -69,4 +53,6 @@ public class Consulta {
     }
 
     
+    
 }
+
