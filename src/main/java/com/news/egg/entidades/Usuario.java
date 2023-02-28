@@ -10,28 +10,27 @@ import javax.persistence.Id;
 
 @Entity
 public class Usuario {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String password;
     private String password2;
     private String email;
-
-        
     private String nombre;
     private String apellido;
     private int dni;
     private String domicilio;
-    
+    private int numeroTelefono;
+
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String password, String password2, String email, String nombre, String apellido, Integer dni, String domicilio, Rol rol) {
+    public Usuario(Long id, String password, String password2, String email, String nombre, String apellido, int dni, String domicilio, int numeroTelefono, Rol rol) {
         this.id = id;
         this.password = password;
         this.password2 = password2;
@@ -40,6 +39,7 @@ public class Usuario {
         this.apellido = apellido;
         this.dni = dni;
         this.domicilio = domicilio;
+        this.numeroTelefono = numeroTelefono;
         this.rol = rol;
     }
 
@@ -114,6 +114,13 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-   
-    
+
+    public int getNumeroTelefono() {
+        return numeroTelefono;
+    }
+
+    public void setNumeroTelefono(int numeroTelefono) {
+        this.numeroTelefono = numeroTelefono;
+    }
+
 }
