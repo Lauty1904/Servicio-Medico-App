@@ -13,6 +13,6 @@ public interface UsuarioRepositorio extends JpaRepository <Usuario, Long> {
     public Usuario buscarPorId(@Param("id") Long IdUsuario);
     
     @Query("SELECT u FROM Usuario u WHERE u.email = :email")
-    public Usuario buscarPorId(@Param("email") String IdEmail);
+    public Usuario buscarPorEmail(@Param("email") String IdEmail);
     
 }
