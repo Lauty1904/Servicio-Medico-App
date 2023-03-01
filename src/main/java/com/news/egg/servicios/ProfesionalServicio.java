@@ -6,7 +6,6 @@ import com.news.egg.enumeraciones.Especialidad;
 import com.news.egg.enumeraciones.Rol;
 import com.news.egg.excepciones.MiException;
 import com.news.egg.repositorios.ProfesionalRepositorio;
-import com.news.egg.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -17,9 +16,6 @@ public class ProfesionalServicio {
    
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
-   
-    @Autowired
-    private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
     public void registrar (String nombre, String apellido, Integer dni, String domicilio, String email, String password, String password2, Double honorario) throws MiException {
