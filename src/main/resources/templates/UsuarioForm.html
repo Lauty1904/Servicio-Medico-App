@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+    <head>
+        <title>Prueba</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <div class = "container">
+                <h2> Cargar Usuario </h2>
+            </div>
+        </header>
+        <div class = "container">
+            <form action ="/usuario/registro" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-group" name="nombre" placeholder="Nombre"> 
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-group" name="apellido" placeholder="Apellido">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-group" name="dni" placeholder="DNI">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-group" name="domicilio" placeholder="Domicilio">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-group" name="email" placeholder="E-mail">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-group" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-group" name="password2" placeholder="Reingrese su password">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-group" name="rol" placeholder="Rol">
+                </div>
+
+                <button type="submit" class="btn btn-primary"> Subir </button>
+            </form>
+        </div>
+    </body>
+</html>
