@@ -8,10 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UsuarioServicio { //hay que agreegar dps implements UserDetailsService
+public class UsuarioServicio implements UserDetailsService{ 
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -29,7 +36,7 @@ public class UsuarioServicio { //hay que agreegar dps implements UserDetailsServ
         usuario.setDomicilio(domicilio);
         usuario.setEmail(email);
         usuario.setRol(Rol.USUARIO);
-        //usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+        usuario.setPassword(new BCryptPasswordEncoder().encode(password));
 
         usuarioRepositorio.save(usuario);
 
@@ -74,6 +81,28 @@ public class UsuarioServicio { //hay que agreegar dps implements UserDetailsServ
         if (!password.equals(password2)) {
             throw new MiException("Las contrasenas deben ser iguales");
         }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        
+        Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
+        
+        List <GrantedAuthority> permisos = new ArrayList();
+        
+        GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
+        
+        permisos.add(p);
+        
+        if(usuario != null){
+            
+            return new User(usuario.getEmail(), usuario.getPassword(),permisos);
+        
+        }else{
+            
+            return null;
+        }
+        
     }
 
 }
