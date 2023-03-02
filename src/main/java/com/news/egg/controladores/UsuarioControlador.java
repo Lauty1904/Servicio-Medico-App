@@ -22,7 +22,11 @@ public class UsuarioControlador {
     @GetMapping("/registrar")
     public String registrar() {
 
+<<<<<<< HEAD
+        return "registro.html";
+=======
         return "UsuarioForm(camo).html";
+>>>>>>> e93129c80a4b64cc8d46b3b5e83818dbead08e5d
     }
 
     @PostMapping("/registro")

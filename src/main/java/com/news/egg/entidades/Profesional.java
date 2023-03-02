@@ -10,10 +10,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-import javax.persistence.Table;
 
 @Entity
-@Table (name = "Profesional")
+//@Table (name = "Profesional")
 public class Profesional extends Usuario implements Serializable {
 
     private double honorario;
@@ -27,6 +26,7 @@ public class Profesional extends Usuario implements Serializable {
     private Especialidad especialidad;
 
     //Constructores
+    
     public Profesional() {
     }
 
