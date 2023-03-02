@@ -25,9 +25,9 @@ public class UsuarioServicio implements UserDetailsService{
 
     @Transactional
     public void registrarNuevoUsuario(String nombre, String apellido, Integer dni, String domicilio, String email,
-            String password, String password2, String rol) throws MiException {
+            String password, String password2, Integer numeroTeléfono, String rol) throws MiException {
 
-        validar(nombre, apellido, dni, domicilio, email, password, password2);
+        validar(nombre, apellido, dni, domicilio, email, password, password2, numeroTeléfono);
 
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
@@ -35,7 +35,8 @@ public class UsuarioServicio implements UserDetailsService{
         usuario.setDni(dni);
         usuario.setDomicilio(domicilio);
         usuario.setEmail(email);
-        usuario.setRol(Rol.USUARIO);
+        usuario.setNumeroTelefono(numeroTeléfono);
+        usuario.setRol(Rol.valueOf(rol.toUpperCase()));
         usuario.setPassword(new BCryptPasswordEncoder().encode(password));
 
         usuarioRepositorio.save(usuario);
@@ -52,7 +53,7 @@ public class UsuarioServicio implements UserDetailsService{
         return usuariosRegistrados;
     }
 
-    private void validar(String nombre, String apellido, Integer dni, String domicilio, String email, String password, String password2) throws MiException {
+    private void validar(String nombre, String apellido, Integer dni, String domicilio, String email, String password, String password2, Integer numeroTelefono) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("El nombre del usuario no puede ser nulo ni vacio");
@@ -64,6 +65,10 @@ public class UsuarioServicio implements UserDetailsService{
 
         if (dni == null) {
             throw new MiException("El dni no puede ser nulo ni vacio");
+        }
+        
+        if (numeroTelefono == null) {
+            throw new MiException("El número de contacto no puede ser nulo ni vacio");
         }
 
         if (domicilio.isEmpty() || domicilio == null) {
