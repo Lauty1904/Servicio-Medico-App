@@ -2,6 +2,8 @@ package com.news.egg.controladores;
 
 import com.news.egg.excepciones.MiException;
 import com.news.egg.servicios.UsuarioServicio;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,19 +22,24 @@ public class UsuarioControlador {
     @GetMapping("/registrar")
     public String registrar() {
 
+<<<<<<< HEAD
         return "registro.html";
+=======
+        return "UsuarioForm(camo).html";
+>>>>>>> e93129c80a4b64cc8d46b3b5e83818dbead08e5d
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre, @RequestParam String apellido, @RequestParam Integer dni, @RequestParam String domicilio, @RequestParam String email,
-            @RequestParam String password, @RequestParam String password2, @RequestParam String rol, ModelMap modelo) {
-
-        try {
-            usuarioservicio.registrarNuevoUsuario(nombre, apellido, dni, domicilio, email, password, password2, rol);
-            modelo.put("Exito", "Usuario registrado correctamente");
-            
-            return "index.html";
-
+    public String registro(@RequestParam (required = false) String nombre, @RequestParam (required = false) String apellido, @RequestParam (required = false) Integer dni, @RequestParam (required = false) String domicilio, 
+            @RequestParam (required = false) String email, @RequestParam (required = false) String password, @RequestParam (required = false) String password2, @RequestParam (required = false) Integer numeroTelefono, 
+            @RequestParam (required = false) String rol, ModelMap modelo) { 
+        
+        
+        try {               
+                usuarioservicio.registrarNuevoUsuario(nombre, apellido, dni, domicilio, email, password, password2, numeroTelefono, rol);
+                
+                modelo.put("Exito", "Usuario registrado correctamente");                             
+                
         } catch (MiException ex) {
             
             modelo.put("Error", ex.getMessage());
@@ -41,11 +48,14 @@ public class UsuarioControlador {
             modelo.put("dni", dni);
             modelo.put("domicilio", domicilio);
             modelo.put("email", email);
+            modelo.put("numero de contacto", numeroTelefono);
             modelo.put("rol", rol);
             
-            return "registro.html";
-            
+            return "UsuarioForm(camo).html";
         }
+            
+            return "index(camo).html";           
+                   
 
     }
 
@@ -56,7 +66,7 @@ public class UsuarioControlador {
             modelo.put("Error","Usuario o contraseña inválidos");
         }
 
-        return "login.html";
+        return "login(camo).html";
     }
     
     @GetMapping("/inicio")

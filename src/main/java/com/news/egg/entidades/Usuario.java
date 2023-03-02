@@ -1,6 +1,7 @@
 package com.news.egg.entidades;
 
 import com.news.egg.enumeraciones.Rol;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,6 +23,7 @@ public class Usuario {
     private String apellido;
     private int dni;
     private String domicilio;
+    @Column(length = 10)
     private int numeroTelefono;
 
     @Enumerated(EnumType.STRING)
@@ -115,11 +117,11 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public int getNumeroTelefono() {
+    public Integer getNumeroTelefono() {
         return numeroTelefono;
     }
 
-    public void setNumeroTelefono(int numeroTelefono) {
+    public void setNumeroTelefono(Integer numeroTelefono) {
         this.numeroTelefono = numeroTelefono;
     }
 
