@@ -20,7 +20,7 @@ public class UsuarioControlador {
     @GetMapping("/registrar")
     public String registrar() {
 
-        return "UsuarioForm.html";
+        return "registro.html";
     }
 
     @PostMapping("/registro")
