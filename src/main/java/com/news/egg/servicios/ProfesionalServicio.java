@@ -34,7 +34,7 @@ public class ProfesionalServicio {
         profesional.setPassword2(password2);
         
      
-        profesional.setRol(Rol.MEDICO);
+        profesional.setRol(Rol.PROFESIONAL);
         
         profesional.setHonorario(honorario);
         profesional.setEspecialidad(Especialidad.valueOf(especialidad));//ver de CAMBIAR los enums por una tabla aparte con Id de especialidad y nombre
@@ -73,7 +73,7 @@ public class ProfesionalServicio {
             profesional.setPassword(new BCryptPasswordEncoder().encode(password));
             profesional.setPassword2(password2);
         
-            profesional.setRol(Rol.MEDICO);
+            profesional.setRol(Rol.PROFESIONAL);
         
             profesional.setHonorario(honorario);
             profesional.setEspecialidad(Especialidad.valueOf(especialidad));//cambiar desde html - Ver de cambiar este ENUM por una tabla de especialidades

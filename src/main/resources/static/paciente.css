@@ -1,0 +1,76 @@
+body {
+    background-image: url("fondo.jpg");
+
+    height: 90x;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+}
+
+
+
+header{
+    display: flex;
+    height: 70px;
+    background-color:aliceblue;
+    justify-content: space-between;
+    align-items:center ;
+    padding: 10px;
+    border-style: solid;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+    margin-right: 10px;
+}
+
+.contenedor {
+    width:50%;
+    height: 500px;
+    display: flex;
+    margin: 40px 40px;
+    justify-content: space-between;
+    align-items: center;  
+}
+
+.card{
+    margin: 70px 40px;
+    background-color: rgb(36, 180, 180);
+
+
+}
+.card-img-top{
+    height: 200px;
+    width:auto;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.btn btn-secondary {
+    cursor:pointer;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.col-md-4 d-flex align-items-center{
+    align-items: center;
+
+    height: 60px;
+    padding: 5px 10%;
+}
+
+button{
+    margin: 5px 5px 5px 5px;
+}
+
+footer{
+    background-color: aliceblue;
+    height: 300px;
+}
+
+
