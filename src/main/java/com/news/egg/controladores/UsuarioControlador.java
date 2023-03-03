@@ -1,9 +1,16 @@
+
+
+
+//TODO ESTO PASA A CONTROLADOR DE PACIENTE.
+
+
+
+
+
 package com.news.egg.controladores;
 
 import com.news.egg.excepciones.MiException;
 import com.news.egg.servicios.UsuarioServicio;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,18 +22,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioControlador {
-    
+
     @Autowired
     private UsuarioServicio usuarioservicio;
 
     @GetMapping("/registrar")
     public String registrar() {
 
-<<<<<<< HEAD
-        return "registro.html";
-=======
-        return "UsuarioForm(camo).html";
->>>>>>> e93129c80a4b64cc8d46b3b5e83818dbead08e5d
+        return "registro_paciente.html";
+
     }
 
     @PostMapping("/registro")
@@ -54,7 +58,7 @@ public class UsuarioControlador {
             return "UsuarioForm(camo).html";
         }
             
-            return "index(camo).html";           
+            return "registro_paciente.html";           
                    
 
     }

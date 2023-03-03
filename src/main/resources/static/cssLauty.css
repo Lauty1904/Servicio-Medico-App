@@ -1,0 +1,66 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    background-image: 
+        url(docs.jpg);
+    background-repeat: no-repeat;
+    background-position: center 40%;
+    background-position: 0 30px;
+    background-size: cover;
+}
+.conteiner-nav{
+    display: inline;
+    padding: 100%;
+}
+
+#nav{
+    background-color: white;
+    list-style: none;
+
+
+}
+a{
+    text-decoration-line: none;
+    color: black;
+}
+.ul-nav{
+    list-style: none;
+    float: left;
+}
+
+nav ul li{
+    padding: 25px 0;
+    margin-right: 75px;
+    float: left;
+}
+
+.form{
+    background-image: linear-gradient(rgba(5, 7, 12, 0.75), rgba(5, 7, 12, 0.75));
+    align-items: normal;
+    padding: 50px 50px 50px;
+    margin: 100px 100px 50px 100px;
+}
+
+.container-form{
+    margin-right: 650px;
+}
+
+h4{
+    color: white;
+}
+
+h6{
+    color: white;
+}
+
+input{
+    padding: auto;
+
+}
+
+[input]{
+    padding-right: 70px;
+}
+
+p{
+    color: white;
+}

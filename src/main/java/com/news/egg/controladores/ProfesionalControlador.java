@@ -58,7 +58,7 @@ public class ProfesionalControlador {
             modelo.put("ERROR", ex.getMessage());
             return "profesional_form.html";  // volvemos a cargar el formulario.
         }
-        return "profesional_form.html";
+        return "perfil_profesional.html";
     }
     
     
