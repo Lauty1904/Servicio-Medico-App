@@ -31,7 +31,7 @@ public class ProfesionalServicio {
         
         profesional.setEmail(email);
         profesional.setPassword(new BCryptPasswordEncoder().encode(password));
-        profesional.setPassword2(password2);
+        profesional.setPassword2(new BCryptPasswordEncoder().encode(password2));
         
      
         profesional.setRol(Rol.PROFESIONAL);
@@ -45,9 +45,9 @@ public class ProfesionalServicio {
 
        public List<Profesional> listarProfesionales() {
 
-        List<Profesional> profesional = new ArrayList();
-        profesional = profesionalRepositorio.findAll();
-        return profesional;
+        List<Profesional> profesionales = new ArrayList();
+        profesionales = profesionalRepositorio.findAll();
+        return profesionales;
     }
     
  
