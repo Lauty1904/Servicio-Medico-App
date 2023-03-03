@@ -22,31 +22,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProfesionalControlador {
     
     @Autowired
-    private UsuarioServicio usuarioServicio;
-    
-    @Autowired
     private ProfesionalServicio profesionalServicio;
-    
-    
+        
     
     @GetMapping("/registrar") //localhost:8080/profesional/registrar
     public String registrar() {
-        return "profesional_form.html";
+        return "registro_profesional.html";
     }
 
     
     @PostMapping("/registro")
-    public String registro(@RequestParam(required = false) Long id, 
-            @RequestParam String nombre,
-            @RequestParam String apellido, 
-            @RequestParam Integer dni, 
-            @RequestParam String domicilio, 
-            @RequestParam Double honorario, 
-            @RequestParam Integer numeroTelefono,
-            @RequestParam String email, 
-            @RequestParam String password, 
-            @RequestParam String password2,
-            @RequestParam String especialidad,
+    public String registro(
+        @RequestParam(required = false)String nombre,
+        @RequestParam(required = false)String apellido, 
+        @RequestParam(required = false) Integer dni, 
+        @RequestParam(required = false) String domicilio, 
+        @RequestParam(required = false) Double honorario, 
+        @RequestParam(required = false) Integer numeroTelefono,
+        @RequestParam(required = false) String email, 
+        @RequestParam(required = false) String password, 
+        @RequestParam(required = false) String password2,
+        @RequestParam(required = false) String especialidad,
             ModelMap modelo) {
         
         try {
