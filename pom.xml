@@ -55,6 +55,11 @@
             <artifactId>spring-security-core</artifactId>
             <version>5.7.3</version>
             <type>jar</type>
+        </dependency>    
+        <dependency>
+            <groupId>com.j2html</groupId>
+            <artifactId>j2html</artifactId>
+            <version>1.6.0</version>
         </dependency>
     </dependencies>
 

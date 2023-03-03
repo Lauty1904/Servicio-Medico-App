@@ -10,31 +10,34 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class ProfesionalServicio {
    
     @Autowired
     private ProfesionalRepositorio profesionalRepositorio;
 
     @Transactional
-    public void registrar (String nombre, String apellido, Integer dni, String domicilio, String email, String password, String password2, Double honorario) throws MiException {
-
+    public void registrar(String nombre, String apellido, Integer dni, String domicilio, Double honorario, Integer numeroTelefono, String email, String password, String password2, String especialidad) throws MiException {
+        
         Profesional profesional = new Profesional();
         profesional.setNombre(nombre);
         profesional.setApellido(apellido);
         profesional.setDomicilio(domicilio);
         profesional.setDni(dni);
+        profesional.setNumeroTelefono(numeroTelefono);
         
         profesional.setEmail(email);
-        profesional.setPassword(password);
-        //profesional.setPassword(new BCryptPasswordEncoder().encode(password));
+        profesional.setPassword(new BCryptPasswordEncoder().encode(password));
         profesional.setPassword2(password2);
         
-        profesional.setRol(Rol.MEDICO);
+     
+        profesional.setRol(Rol.PROFESIONAL);
         
         profesional.setHonorario(honorario);
-        profesional.setEspecialidad(Especialidad.Pediatria);//ver de CAMBIAR los enums por una tabla aparte con Id de especialidad y nombre
+        profesional.setEspecialidad(Especialidad.valueOf(especialidad));//ver de CAMBIAR los enums por una tabla aparte con Id de especialidad y nombre
         
         profesionalRepositorio.save(profesional);
 
@@ -44,14 +47,13 @@ public class ProfesionalServicio {
 
         List<Profesional> profesional = new ArrayList();
         profesional = profesionalRepositorio.findAll();
-
         return profesional;
     }
     
  
     
     @Transactional
-    public void actualizar (Long id, String nombre, String apellido, Integer dni, String domicilio, String email, String password, String password2, Double honorario) throws MiException {
+    public void actualizar (Long id, String nombre, String apellido, Integer dni, String domicilio, Double honorario, Integer numeroTelefono, String email, String password, String password2, String especialidad) throws MiException {
 
         validar(nombre, apellido, dni, email, password, password2);
 
@@ -65,28 +67,28 @@ public class ProfesionalServicio {
             profesional.setDomicilio(domicilio);
             profesional.setDni(dni);    
             profesional.setEmail(email);
+            profesional.setNumeroTelefono(numeroTelefono);
             
-            //profesional.setPassword(password);
-            //profesional.setPassword(new BCryptPasswordEncoder().encode(password));
-            //profesional.setPassword2(password2);
+            profesional.setPassword(password);
+            profesional.setPassword(new BCryptPasswordEncoder().encode(password));
+            profesional.setPassword2(password2);
         
-            profesional.setRol(Rol.MEDICO);
+            profesional.setRol(Rol.PROFESIONAL);
         
             profesional.setHonorario(honorario);
-            profesional.setEspecialidad(Especialidad.Pediatria);//cambiar desde html - Ver de cambiar este ENUM por una tabla de especialidades
+            profesional.setEspecialidad(Especialidad.valueOf(especialidad));//cambiar desde html - Ver de cambiar este ENUM por una tabla de especialidades
 
             profesionalRepositorio.save(profesional);
-  
         }
-
     }
+    
+    
     
     public Profesional getOne(Long id){
         return profesionalRepositorio.getOne(id);
     }
     
 
-    
     private void validar(String nombre, String apellido, Integer dni, String email, String password, String password2) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
