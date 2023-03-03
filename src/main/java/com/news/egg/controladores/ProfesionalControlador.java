@@ -5,7 +5,6 @@ package com.news.egg.controladores;
 import com.news.egg.entidades.Profesional;
 import com.news.egg.excepciones.MiException;
 import com.news.egg.servicios.ProfesionalServicio;
-import com.news.egg.servicios.UsuarioServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,11 +53,9 @@ public class ProfesionalControlador {
             modelo.put("ERROR", ex.getMessage());
             return "profesional_form.html";  // volvemos a cargar el formulario.
         }
-        return "perfil_profesional.html";
+        return "panel_admin.html";
     }
-    
-    
-    
+        
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, ModelMap modelo){
         
