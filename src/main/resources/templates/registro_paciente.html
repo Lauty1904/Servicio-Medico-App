@@ -1,121 +1,122 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 
-<head>
-    <title>Medical Services</title>
-    <meta charset="utf-8" />
-    <link rel="icon" href="images/icono.png" />
-    <link rel="stylesheet" type="text/css" href="normalize.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="../static/registro.css" />
-</head>
+    <head>
+        <title>Medical Services</title>
+        <meta charset="utf-8" />
+        <link rel="icon" href="images/logo.png" />
+        <link rel="stylesheet" type="text/css" href="normalize.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+              integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" href="../static/registro.css" />
+    </head>
 
-<body>
-    <nav class="navbar bg-body-tertiary" id="nav">
-        <div class="container-fluid">
-            <a class="navbar-brand">Medical Services</a>
-        </div>
-    </nav>
+    <body>
+        <nav class="navbar bg-body-tertiary" id="nav">
+            <div class="container-fluid">
+                <a class="navbar-brand">Medical Services</a>
+            </div>
+        </nav>
 
-    <div class="container-form">
-        <form th:action="@{/paciente/registro}" method="POST" enctype="multipart/form-data" class="form">
-            <h4>Por favor, ingrese sus datos</h4>
-            <div name="input">
-                <h6>Nombre</h6>
-                <input name="nombre" th:value="${nombre}" className="form-control" type="text" />
-            </div><br />
-            <div name="input">
-                <h6>Apellido</h6>
-                <input name="apellido" th:value="${apellido}" className="form-control" type="text" />
-            </div><br />
-            <div name="input">
-                <h6>DNI</h6>
-                <input name="dni" th:value="${dni}" className="form-control" type="number" />
-            </div><br />
-            <!---
-            <div name="input">
-                <h6>Fecha de nacimiento</h6>
-                <input name="genero" th:value="${genero}" className="form-control" type="text" />
-            </div><br />
-            --->
-            <div name="input">
-                <h6>Genero AGREGAR OPCIONES Y LISTA</h6>
-                <input name="genero" th:value="${genero}" className="form-control" type="text" />
-            </div><br />
-            <div name="input">
-                <h6>Obra Social. COLOCAR LA PRIMERA OPCION COMO PARTICULAR</h6>
-                <input name="obraSocial" th:value="${obraSocial}" className="form-control" type="text" />
-            </div><br />
-            <div name="input">
-                <h6>Domicilio</h6>
-                <input name="domicilio" th:value="${domicilio}" className="form-control" type="text" />
+        <form th:action="@{/paciente/registro}" method="POST" enctype="multipart/form-data">
+            <div class="card text-white bg-dark mb-3 position-absolute top-50 start-50 translate-middle" style="max-width: 35rem;">
+                <div class="card-body">
+                    <h2>Por favor, ingrese sus datos</h2><br>
+                    <div class="form-group">
+                        <label for="ejemploNombre">Nombre</label>
+                        <input type="text" class="form-control" id="ejemploNombre" name="nombre"
+                               aria-describedby="noticiaHelp" placeholder="Ingrese su Nombre" required th:value="${nombre}">
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemploApellido">Apellido</label>
+                        <input type="text" class="form-control" id="ejemploApellido" name="apellido"
+                               aria-describedby="noticiaHelp" placeholder="Ingrese su Apellido" required th:value="${apellido}">
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemploDNI">DNI</label>
+                        <input type="number" class="form-control" id="ejemploDNI" name="dni"
+                               aria-describedby="noticiaHelp" placeholder="Ingrese su DNI" required th:value="${dni}">
+                    </div>
+                    <!---<div class="form-group">
+                        <label for="ejemploNacimiento">Fecha de Nacimiento</label>
+                        <input type="number" class="form-control" id="ejemploDNI" name="nacimiento"
+                               aria-describedby="noticiaHelp" placeholder="Ingrese su Fecha de nacimiento" required th:value="${nacimiento}">
+                    </div><br> --->
+                    <div class="form-group">
+                        <label for="ejemploGenero">Genero. HACER LISTA de opciones</label>
+                        <input type="number" class="form-control" id="ejemploApellido" name="genero"
+                               aria-describedby="noticiaHelp" placeholder="Seleccione su genero" required th:value="${genero}">
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemploObraSocial">Seleccione Obra Social. Traer lista desde el enum</label>
+                        <input type="number" class="form-control" id="ejemploObraSocial" name="obraSocial"
+                               aria-describedby="noticiaHelp" placeholder="Seleccione su Obra Social" required th:value="${obraSocial}">
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemploDomicilio">Domicilio</label>
+                        <input type="text" class="form-control" id="ejemploDomicilio" name="domicilio"
+                               aria-describedby="noticiaHelp" placeholder="Ingrese su Domicilio" required th:value="${domicilio}">
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemploTelefono">Numero de telefono</label>
+                        <input type="number" class="form-control" id="ejemploTelefono" name="numeroTelefono"
+                               aria-describedby="noticiaHelp" placeholder="Ingrese su DNI" required th:value="${numeroTelefono}">
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemploCuerpo">Email</label>
+                        <input type="text" class="form-control" id="ejemploTitulo" name="email"
+                               aria-describedby="noticiaHelp" placeholder="Ingrese su mail" required th:value="${email}">
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemploCuerpo">Contrasena</label>
+                        <input type="text" class="form-control" id="ejemploTitulo" name="password"
+                               aria-describedby="noticiaHelp" placeholder="Contrasena" required th:value="${password}">
+                    </div>
+                    <div class="form-group">
+                        <label for="ejemploCuerpo">Repetir contrasena</label>
+                        <input type="text" class="form-control" id="ejemploTitulo" name="password2"
+                               aria-describedby="noticiaHelp" placeholder="Contrasena" required th:value="${password2}">
+                    </div> <br>
+
+                    <button type="submit" class="btn btn-success">Enviar</button>
+                    <a class="btn btn-danger" href="http://localhost:8080" role="button">Cancelar</a>
+                    <div class="form-group my-3" >
+                    </div>
+
+
+                    <div th:if="${error!= null}" class="card text-white bg-danger mb-3 mensajeError" >
+                        <div class="card-body">
+                            <h5 class="card-title">Error ð</h5>
+                            <p class="card-text" th:text="${error}"></p>
+                        </div>
+                    </div>
+                    <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+                        <div class="card-body">
+                            <h5 class="card-title">Exito!</h5>
+                            <p class="card-text" th:text="${exito}"></p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <br />
-            <div name="input">
-                <br />
-                <h6>Numero de telefono</h6>
-                <input name="numeroTelefono" th:value="${numeroTelefono}" className="form-control" type="number" />
-            </div><br />
-            <div name="input">
-                <h6>Email</h6>
-                <input name="email" th:value="${email}" type="mail" className="form-control"
-                    placeholder="Example@email.com" />
-            </div><br />
-            <br />
-            <div name="input">
-                <h6>Contraseña</h6>
-                <input name="password" type="password" th:value="${password}" className="form-control"
-                    placeholder="****" />
-            </div>
-            <br />
-            <div name="input">
-                <h6>Repetir contraseña</h6>
-                <input name="password2" type="password" th:value="${password2}" className="form-control"
-                    placeholder="****" />
-            </div>
-            <br />
-            <!--- <p>
-                           Selecciona tu Rol:
-                           <select>
-                             <option th:value="${rol}" name="rol">Profesional</option>
-                             <option>Paciente</option>
-                           </select>
-                        </p>                 
-                         <div class="form-group my-3">
-                                     <input list = "Rol" type="text" class="form-control" name="rol" placeholder="Rol">
-                                         <datalist id="Rol">
-                                             <option value="Paciente">
-                                             <option value="Medico">                     
-                                         </datalist>
-                                 </div>                
-                            <div name="input">
-                                <h6>Rol</h6>
-                                <input name="rol" type="text" th:value="${rol}" className="form-control" placeholder="rol" />
-                            </div>
-                            <br />
-                            --->
-            <button type="submit">Enviar</button>
-            <a href="http://localhost:8080"> Cancelar </a>
         </form>
-    </div>
 
-    <div class="footer">
-        <footer>
-            <p>Coopyrigth 2023.</p>
-        </footer>
-    </div>
+        <div class="footer">
+            <footer>
+                <p>Coopyrigth 2023.</p>
+            </footer>
+        </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
-        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+                integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
-</body>
+    </body>
 
 </html>
