@@ -20,8 +20,22 @@
     </nav>
 
     <div class="container-form">
-        <form th:action="@{/paciente/registro}" method="POST" enctype="multipart/form-data" class="form">
-            <h4>Por favor, ingrese sus datos</h4>
+        <form th:action="@{/profesional/registro}" method="POST" enctype="multipart/form-data" class="form">
+
+            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                <div class="card-body">
+                    <h5 class="card-title">Error ð</h5>
+                    <p class="card-text" th:text="${error}"></p>
+                </div>
+            </div>
+            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+                <div class="card-body">
+                    <h5 class="card-title">Exito!</h5>
+                    <p class="card-text" th:text="${exito}"></p>
+                </div>
+            </div>
+
+            <h4>Registro de nuevo profesional</h4>
             <div name="input">
                 <h6>Nombre</h6>
                 <input name="nombre" th:value="${nombre}" className="form-control" type="text" />
@@ -41,14 +55,6 @@
             </div><br />
             --->
             <div name="input">
-                <h6>Genero AGREGAR OPCIONES Y LISTA</h6>
-                <input name="genero" th:value="${genero}" className="form-control" type="text" />
-            </div><br />
-            <div name="input">
-                <h6>Obra Social. COLOCAR LA PRIMERA OPCION COMO PARTICULAR</h6>
-                <input name="obraSocial" th:value="${obraSocial}" className="form-control" type="text" />
-            </div><br />
-            <div name="input">
                 <h6>Domicilio</h6>
                 <input name="domicilio" th:value="${domicilio}" className="form-control" type="text" />
             </div>
@@ -61,13 +67,17 @@
             <div name="input">
                 <h6>Email</h6>
                 <input name="email" th:value="${email}" type="mail" className="form-control"
-                    placeholder="Example@email.com" />
+                       placeholder="Example@email.com" />
             </div><br />
-            <br />
+            <div name="input">
+                <br />
+                <h6>Honorario</h6>
+                <input name="honorario" th:value="${honorario}" className="form-control" type="number" />
+            </div><br />
             <div name="input">
                 <h6>Contraseña</h6>
                 <input name="password" type="password" th:value="${password}" className="form-control"
-                    placeholder="****" />
+                       placeholder="****" />
             </div>
             <br />
             <div name="input">
@@ -76,28 +86,19 @@
                     placeholder="****" />
             </div>
             <br />
-            <!--- <p>
-                           Selecciona tu Rol:
-                           <select>
-                             <option th:value="${rol}" name="rol">Profesional</option>
-                             <option>Paciente</option>
-                           </select>
-                        </p>                 
-                         <div class="form-group my-3">
-                                     <input list = "Rol" type="text" class="form-control" name="rol" placeholder="Rol">
-                                         <datalist id="Rol">
-                                             <option value="Paciente">
-                                             <option value="Medico">                     
-                                         </datalist>
-                                 </div>                
-                            <div name="input">
-                                <h6>Rol</h6>
-                                <input name="rol" type="text" th:value="${rol}" className="form-control" placeholder="rol" />
-                            </div>
-                            <br />
-                            --->
+
+            <div name="input">
+                <label for="exampleFormControlInput1" class="form-label">Seleccionar Especialidad</label>
+                <select name="especialidad">
+                    <option type="text" th:value="Pediatria"> Pediatria </option>
+                    <option type="text" th:value="Cardiologia"> Cardiologia </option>
+                    <option type="text" th:value="Clinica"> Clinica </option>
+                </select>
+            </div>
+            <br />
+            
             <button type="submit">Enviar</button>
-            <a href="http://localhost:8080"> Cancelar </a>
+            <a href="index.html"> Cancelar </a>
         </form>
     </div>
 

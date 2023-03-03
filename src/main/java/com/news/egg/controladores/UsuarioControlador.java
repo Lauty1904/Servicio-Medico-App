@@ -1,12 +1,5 @@
 
 
-
-//TODO ESTO PASA A CONTROLADOR DE PACIENTE.
-
-
-
-
-
 package com.news.egg.controladores;
 
 import com.news.egg.excepciones.MiException;
@@ -63,20 +56,7 @@ public class UsuarioControlador {
 
     }
 
-    @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
-        
-        if (error!=null){
-            modelo.put("Error","Usuario o contraseña inválidos");
-        }
 
-        return "login(camo).html";
-    }
     
-    @GetMapping("/inicio")
-    public String inicio() {
-
-        return "inicio.html";
-    }
     
 }
