@@ -2,6 +2,7 @@ package com.news.egg.controladores;
 
 import com.news.egg.excepciones.MiException;
 import com.news.egg.servicios.PacienteServicio;
+import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,12 +25,21 @@ public class PacienteControlador {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) String apellido, @RequestParam(required = false) Integer dni, @RequestParam(required = false) String domicilio,
-            @RequestParam(required = false) String email, @RequestParam(required = false) String password, @RequestParam(required = false) String password2, @RequestParam(required = false) Integer numeroTelefono,
-            @RequestParam(required = false) String genero, @RequestParam(required = false) Integer obraSocial, ModelMap modelo){
+    public String registro(@RequestParam(required = false) String nombre, 
+            @RequestParam(required = false) String apellido, 
+            @RequestParam(required = false) Integer dni, 
+            @RequestParam(required = false) String domicilio,
+            @RequestParam(required = false) Date nacimiento,
+            @RequestParam(required = false) Integer numeroTelefono,
+            @RequestParam(required = false) String genero, 
+            @RequestParam(required = false) String obraSocial, 
+            @RequestParam(required = false) String email, 
+            @RequestParam(required = false) String password,
+            @RequestParam(required = false) String password2,
+            ModelMap modelo){
         
         try {            
-            pacienteServicio.registrarNuevoPaciente(nombre, apellido, dni, domicilio, numeroTelefono, email, password, password2, genero, obraSocial);
+            pacienteServicio.registrarNuevoPaciente(nombre, apellido, dni, domicilio, nacimiento, numeroTelefono, genero, obraSocial, email, password, password2);
             modelo.put("Exito", "Paciente registrado correctamente");
 
         } catch (MiException ex) {
@@ -39,6 +49,7 @@ public class PacienteControlador {
             modelo.put("apellido", apellido);
             modelo.put("dni", dni);
             modelo.put("domicilio", domicilio);
+            modelo.put("nacimiento", nacimiento);
             modelo.put("email", email);
             modelo.put("numero de contacto", numeroTelefono);
 

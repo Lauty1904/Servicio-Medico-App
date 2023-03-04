@@ -1,5 +1,5 @@
 body {
-    background-image: url("fondo.jpg");
+    background-image: url("..\images\fondo.jpg");
 
     height: 90x;
     margin-right: 10px;
@@ -19,12 +19,13 @@ header{
 }
 
 .logo{
+    height: 20px;
     display: flex;
     align-items: center;
 }
 
 .logo img {
-    height: 60px;
+    height: 20px;
     margin-right: 10px;
 }
 
@@ -59,8 +60,7 @@ header{
 
 .col-md-4 d-flex align-items-center{
     align-items: center;
-
-    height: 60px;
+    height: 20px;
     padding: 5px 10%;
 }
 

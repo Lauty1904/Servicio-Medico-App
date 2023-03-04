@@ -1,7 +1,7 @@
 body{
     font-family: sans-serif;
     margin: 0;
-    background-image: url("/doctor.jpg");
+    background-image: url("..\images\doctor.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center 40%;
@@ -31,12 +31,13 @@ header{
 }
 
 .logo{
+    width: 50%;
     display: flex;
     align-items: center;
 }
 
 .logo img{
-    height: 60px;
+    width: 50%;
     margin-right: 10px;
 }
 
