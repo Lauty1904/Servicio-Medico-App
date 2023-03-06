@@ -44,9 +44,9 @@
                                aria-describedby="noticiaHelp" placeholder="Ingrese su Fecha de nacimiento" required th:value="${nacimiento}">
                     </div><br> --->
                     <div class="form-group">
-                        <label for="ejemploGenero">Genero. HACER LISTA de opciones</label>
+                        <label for="ejemploGenero">Género. HACER LISTA de opciones</label>
                         <input type="number" class="form-control" id="ejemploApellido" name="genero"
-                               aria-describedby="noticiaHelp" placeholder="Seleccione su genero" required th:value="${genero}">
+                               aria-describedby="noticiaHelp" placeholder="Seleccione su género" required th:value="${genero}">
                     </div>
                     <div class="form-group">
                         <label for="ejemploObraSocial">Seleccione Obra Social. Traer lista desde el enum</label>
@@ -59,24 +59,24 @@
                                aria-describedby="noticiaHelp" placeholder="Ingrese su Domicilio" required th:value="${domicilio}">
                     </div>
                     <div class="form-group">
-                        <label for="ejemploTelefono">Numero de telefono</label>
-                        <input type="number" class="form-control" id="ejemploTelefono" name="numeroTelefono"
-                               aria-describedby="noticiaHelp" placeholder="Ingrese su DNI" required th:value="${numeroTelefono}">
+                        <label for="ejemploTelefono">Numero de teléfono</label>
+                        <input type="text" inputmode="numeric" class="form-control" id="ejemploTelefono" name="numeroTelefono"
+                               aria-describedby="noticiaHelp" placeholder="Ingrese su número de teléfono" required th:value="${numeroTelefono}">
                     </div>
                     <div class="form-group">
                         <label for="ejemploCuerpo">Email</label>
                         <input type="text" class="form-control" id="ejemploTitulo" name="email"
-                               aria-describedby="noticiaHelp" placeholder="Ingrese su mail" required th:value="${email}">
+                               aria-describedby="noticiaHelp" placeholder="Ingrese su e-mail" required th:value="${email}">
                     </div>
                     <div class="form-group">
-                        <label for="ejemploCuerpo">Contrasena</label>
+                        <label for="ejemploCuerpo">Contraseña</label>
                         <input type="text" class="form-control" id="ejemploTitulo" name="password"
-                               aria-describedby="noticiaHelp" placeholder="Contrasena" required th:value="${password}">
+                               aria-describedby="noticiaHelp" placeholder="Contraseña" required th:value="${password}">
                     </div>
                     <div class="form-group">
-                        <label for="ejemploCuerpo">Repetir contrasena</label>
+                        <label for="ejemploCuerpo">Repetir contraseña</label>
                         <input type="text" class="form-control" id="ejemploTitulo" name="password2"
-                               aria-describedby="noticiaHelp" placeholder="Contrasena" required th:value="${password2}">
+                               aria-describedby="noticiaHelp" placeholder="Contraseña" required th:value="${password2}">
                     </div> <br>
 
                     <button type="submit" class="btn btn-success">Enviar</button>

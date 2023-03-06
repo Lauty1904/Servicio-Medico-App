@@ -23,7 +23,7 @@ public class Usuario {
     private String apellido;
     private int dni;
     private String domicilio;
-    @Column(length = 10)
+    @Column(length = 11)
     private int numeroTelefono;
 
     @Enumerated(EnumType.STRING)
