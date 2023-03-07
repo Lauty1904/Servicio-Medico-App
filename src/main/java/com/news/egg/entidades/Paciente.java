@@ -38,7 +38,7 @@ public class Paciente extends Usuario {
         this.historiaClinica = historiaClinica;
     }
 
-    public Paciente(int idobraSocial, Date nacimiento, ObraSocial obraSocial, Genero genero, HistoriaClinica historiaClinica, Long id, String password, String password2, String email, String nombre, String apellido, int dni, String domicilio, int numeroTelefono, Rol rol) {
+    public Paciente(int idobraSocial, Date nacimiento, ObraSocial obraSocial, Genero genero, HistoriaClinica historiaClinica, Long id, String password, String password2, String email, String nombre, String apellido, int dni, String domicilio, Long numeroTelefono, Rol rol) {
         super(id, password, password2, email, nombre, apellido, dni, domicilio, numeroTelefono, rol);
         this.idobraSocial = idobraSocial;
         this.nacimiento = nacimiento;

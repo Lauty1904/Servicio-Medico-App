@@ -30,7 +30,7 @@ public class PacienteControlador {
             @RequestParam(required = false) Integer dni, 
             @RequestParam(required = false) String domicilio,
             @RequestParam(required = false) Date nacimiento,
-            @RequestParam(required = false) Integer numeroTelefono,
+            @RequestParam(required = false) Long numeroTelefono,
             @RequestParam(required = false) String genero, 
             @RequestParam(required = false) String obraSocial, 
             @RequestParam(required = false) String email, 

@@ -28,7 +28,7 @@ public class UsuarioControlador {
 
     @PostMapping("/registro")
     public String registro(@RequestParam (required = false) String nombre, @RequestParam (required = false) String apellido, @RequestParam (required = false) Integer dni, @RequestParam (required = false) String domicilio, 
-            @RequestParam (required = false) String email, @RequestParam (required = false) String password, @RequestParam (required = false) String password2, @RequestParam (required = false) Integer numeroTelefono, 
+            @RequestParam (required = false) String email, @RequestParam (required = false) String password, @RequestParam (required = false) String password2, @RequestParam (required = false) Long numeroTelefono, 
             @RequestParam (required = false) String rol, ModelMap modelo) { 
         
         

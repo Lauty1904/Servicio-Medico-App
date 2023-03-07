@@ -25,7 +25,7 @@ public class UsuarioServicio implements UserDetailsService{
 
     @Transactional
     public void registrarNuevoUsuario(String nombre, String apellido, Integer dni, String domicilio, String email,
-            String password, String password2, Integer numeroTeléfono, String rol) throws MiException {
+            String password, String password2, Long numeroTeléfono, String rol) throws MiException {
 
         validar(nombre, apellido, dni, domicilio, email, password, password2, numeroTeléfono);
 
@@ -53,7 +53,7 @@ public class UsuarioServicio implements UserDetailsService{
         return usuariosRegistrados;
     }
 
-    private void validar(String nombre, String apellido, Integer dni, String domicilio, String email, String password, String password2, Integer numeroTelefono) throws MiException {
+    private void validar(String nombre, String apellido, Integer dni, String domicilio, String email, String password, String password2,Long numeroTelefono) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("El nombre del usuario no puede ser nulo ni vacio");
