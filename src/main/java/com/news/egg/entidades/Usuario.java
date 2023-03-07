@@ -23,8 +23,7 @@ public class Usuario {
     private String apellido;
     private int dni;
     private String domicilio;
-    @Column(length = 10)
-    private int numeroTelefono;
+    private Long numeroTelefono;
 
     @Enumerated(EnumType.STRING)
     private Rol rol;
@@ -32,7 +31,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String password, String password2, String email, String nombre, String apellido, int dni, String domicilio, int numeroTelefono, Rol rol) {
+    public Usuario(Long id, String password, String password2, String email, String nombre, String apellido, int dni, String domicilio, Long numeroTelefono, Rol rol) {
         this.id = id;
         this.password = password;
         this.password2 = password2;
@@ -117,11 +116,11 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public Integer getNumeroTelefono() {
+    public Long getNumeroTelefono() {
         return numeroTelefono;
     }
 
-    public void setNumeroTelefono(Integer numeroTelefono) {
+    public void setNumeroTelefono(Long numeroTelefono) {
         this.numeroTelefono = numeroTelefono;
     }
 
