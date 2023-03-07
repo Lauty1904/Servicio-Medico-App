@@ -18,7 +18,7 @@ body{
 }
 a{
     text-decoration: none;
-    color: black;
+    color:dodgerblue;
 }
 header{
     display: flex;
@@ -31,12 +31,13 @@ header{
 }
 
 .logo{
+    height: 10%;
     display: flex;
     align-items: center;
 }
 
 .logo img{
-    height: 60px;
+    height: 6px;
     margin-right: 10px;
 }
 
@@ -46,5 +47,5 @@ nav a{
 }
 
 nav a:hover{
-    color: blue;
+    color: rgb(10, 10, 193);
 }

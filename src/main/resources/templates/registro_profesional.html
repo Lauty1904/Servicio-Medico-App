@@ -36,24 +36,22 @@
             </div>
 
             <h4>Registro de nuevo profesional</h4>
+            
             <div name="input">
                 <h6>Nombre</h6>
                 <input name="nombre" th:value="${nombre}" className="form-control" type="text" />
             </div><br />
+            
             <div name="input">
                 <h6>Apellido</h6>
                 <input name="apellido" th:value="${apellido}" className="form-control" type="text" />
             </div><br />
+            
             <div name="input">
                 <h6>DNI</h6>
                 <input name="dni" th:value="${dni}" className="form-control" type="number" />
             </div><br />
-            <!---
-            <div name="input">
-                <h6>Fecha de nacimiento</h6>
-                <input name="genero" th:value="${genero}" className="form-control" type="text" />
-            </div><br />
-            --->
+         
             <div name="input">
                 <h6>Domicilio</h6>
                 <input name="domicilio" th:value="${domicilio}" className="form-control" type="text" />
@@ -65,15 +63,18 @@
                 <input name="numeroTelefono" th:value="${numeroTelefono}" className="form-control" type="number" />
             </div><br />
             <div name="input">
+            
                 <h6>Email</h6>
                 <input name="email" th:value="${email}" type="mail" className="form-control"
                        placeholder="Example@email.com" />
             </div><br />
+            
             <div name="input">
                 <br />
                 <h6>Honorario</h6>
                 <input name="honorario" th:value="${honorario}" className="form-control" type="number" />
             </div><br />
+            
             <div name="input">
                 <h6>Contraseña</h6>
                 <input name="password" type="password" th:value="${password}" className="form-control"
@@ -98,7 +99,7 @@
             <br />
             
             <button type="submit">Enviar</button>
-            <a href="index.html"> Cancelar </a>
+            <a href="http://localhost:8080/admin/panelPrincipal"> Cancelar </a>
         </form>
     </div>
 

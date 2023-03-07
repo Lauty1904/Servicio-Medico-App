@@ -20,7 +20,7 @@ public class ProfesionalServicio {
     private ProfesionalRepositorio profesionalRepositorio;
 
     @Transactional
-    public void registrar(String nombre, String apellido, Integer dni, String domicilio, Double honorario, Integer numeroTelefono, String email, String password, String password2, String especialidad) throws MiException {
+    public void registrar(String nombre, String apellido, Integer dni, String domicilio, Double honorario, Long numeroTelefono, String email, String password, String password2, String especialidad) throws MiException {
         
         Profesional profesional = new Profesional();
         profesional.setNombre(nombre);
@@ -53,7 +53,7 @@ public class ProfesionalServicio {
  
     
     @Transactional
-    public void actualizar (Long id, String nombre, String apellido, Integer dni, String domicilio, Double honorario, Integer numeroTelefono, String email, String password, String password2, String especialidad) throws MiException {
+    public void actualizar (Long id, String nombre, String apellido, Integer dni, String domicilio, Double honorario, Long numeroTelefono, String email, String password, String password2, String especialidad) throws MiException {
 
         validar(nombre, apellido, dni, email, password, password2);
 
