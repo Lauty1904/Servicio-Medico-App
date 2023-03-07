@@ -23,7 +23,7 @@ public class PacienteServicio {
     private PacienteRepositorio pacienteRepositorio;
 
     @Transactional
-    public void registrarNuevoPaciente(String nombre, String apellido, Integer dni, String domicilio, Date nacimiento, Integer numeroTelefono, String genero, String obraSocial, String email, String password, String password2) throws MiException{
+    public void registrarNuevoPaciente(String nombre, String apellido, Integer dni, String domicilio, Date nacimiento, Long numeroTelefono, String genero, String obraSocial, String email, String password, String password2) throws MiException{
 
         Paciente paciente = new Paciente();
         paciente.setNombre(nombre);
@@ -52,7 +52,7 @@ public class PacienteServicio {
     
      
     @Transactional
-    public void actualizarPaciente (Long id, String nombre, String apellido, Integer dni, String domicilio, Date nacimiento, Integer numeroTelefono, String genero, String obraSocial, String email, String password, String password2) throws MiException {
+    public void actualizarPaciente (Long id, String nombre, String apellido, Integer dni, String domicilio, Date nacimiento, Long numeroTelefono, String genero, String obraSocial, String email, String password, String password2) throws MiException {
 
         validar(nombre, apellido, dni, numeroTelefono, email, password, password2);
 
@@ -75,7 +75,6 @@ public class PacienteServicio {
         
             paciente.setRol(Rol.PACIENTE);
         
-
             pacienteRepositorio.save(paciente);
         }
     }
@@ -87,7 +86,7 @@ public class PacienteServicio {
     }
     
 
-    private void validar(String nombre, String apellido, Integer dni, Integer numeroTelefono, String email, String password, String password2) throws MiException {
+    private void validar(String nombre, String apellido, Integer dni, Long numeroTelefono, String email, String password, String password2) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("el nombre no puede ser nulo o estar vacío");

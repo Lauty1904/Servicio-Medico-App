@@ -37,7 +37,7 @@ public class ProfesionalControlador {
         @RequestParam(required = false) Integer dni, 
         @RequestParam(required = false) String domicilio, 
         @RequestParam(required = false) Double honorario, 
-        @RequestParam(required = false) Integer numeroTelefono,
+        @RequestParam(required = false) Long numeroTelefono,
         @RequestParam(required = false) String email, 
         @RequestParam(required = false) String password, 
         @RequestParam(required = false) String password2,
