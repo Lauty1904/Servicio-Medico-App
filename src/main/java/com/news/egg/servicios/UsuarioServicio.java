@@ -6,7 +6,11 @@ import com.news.egg.excepciones.MiException;
 import com.news.egg.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< Updated upstream
 import java.util.Optional;
+=======
+import javax.servlet.http.HttpSession;
+>>>>>>> Stashed changes
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,6 +21,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 public class UsuarioServicio implements UserDetailsService {
@@ -55,6 +61,7 @@ public class UsuarioServicio implements UserDetailsService {
         return usuariosRegistrados;
     }
 
+<<<<<<< Updated upstream
     @Transactional
     public void modificarUsuario(Long id, String nombre, String apellido, Integer dni, String domicilio, String email,
             String password, String password2, Long numeroTeléfono, String rol) throws MiException {
@@ -105,6 +112,8 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
+=======
+>>>>>>> Stashed changes
     private void validar(String nombre, String apellido, Integer dni, String domicilio, String email, String password, String password2, Long numeroTelefono) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
@@ -140,4 +149,35 @@ public class UsuarioServicio implements UserDetailsService {
         }
     }
 
+<<<<<<< Updated upstream
+=======
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+        Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
+
+        List<GrantedAuthority> permisos = new ArrayList();
+
+        GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
+
+        permisos.add(p);
+
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+
+        HttpSession session = attr.getRequest().getSession(true);
+
+        session.setAttribute("usuariosession", usuario);
+
+        if (usuario != null) {
+
+            return new User(usuario.getEmail(), usuario.getPassword(), permisos);
+
+        } else {
+
+            return null;
+        }
+
+    }
+
+>>>>>>> Stashed changes
 }
