@@ -25,6 +25,7 @@ public class Usuario {
     private String domicilio;
     private Long numeroTelefono;
 
+
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
