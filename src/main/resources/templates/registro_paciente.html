@@ -23,120 +23,89 @@
             <div class="card text-white bg-dark mb-3 position-absolute top-50 start-50 translate-middle" style="max-width: 35rem;">
                 <div class="card-body">
                     <h2>Por favor, ingrese sus datos</h2><br>
-                    <div name="input">
-                        <h6>Nombre</h6>
-                        <input name="nombre" th:value="${nombre}" className="form-control" type="text" />
-                    </div><br />
-
-                    <div name="input">
-                        <h6>Apellido</h6>
-                        <input name="apellido" th:value="${apellido}" className="form-control" type="text" />
-                    </div><br />
-
-                    <div name="input">
-                        <h6>DNI</h6>
-                        <input name="dni" th:value="${dni}" className="form-control" type="number" />
-                    </div><br />
-
-                    <div name="input">
-                        <h6>Domicilio</h6>
-                        <input name="domicilio" th:value="${domicilio}" className="form-control" type="text" />
-                    </div>
-                    <br />
-                    
-                    <div name="input">
-                        <h6>Fecha de Nacimiento</h6>
-                        <input name="nacimiento" th:value="${nacimiento}" className="form-control" type="date" />
-                    </div>
-                    <br />
-                    
-                    
-                    <div name="input">
-                        <br />
-                        <h6>Numero de telefono</h6>
-                        <input name="numeroTelefono" th:value="${numeroTelefono}" className="form-control" type="number" />
-                    </div><br />
-                    <div name="input">
-
-                    <div name="input">
-                        <br />
-                        <label for="exampleFormControlInput1" class="form-label">Genero</label>
-                            <select name="genero">
-                                <option type="text" th:value="masculino"> masculino </option>
-                                <option type="text" th:value="femenino"> femenino </option>
-                                <option type="text" th:value="otro"> otro </option>
-                            </select>
-                    </div><br />
-
-                    <div name="input">
-                        <br />
-                        <label for="exampleFormControlInput1" class="form-label">Obra Social</label>
-                            <select name="obraSocial">
-                                <option type="text" th:value="OBRA_SOCIAL_DE_CHOFERES_DE_CAMIONES"> O.S. Choferes </option>
-                                <option type="text" th:value="OBRA_SOCIAL_FERROVIARIA"> O.S. Ferroviarios </option>
-                                <option type="text" th:value="MUTUAL_DEL_PERSONAL_DEL_AGUA_Y_LA_ENERGIA_DE_MENDOZA"> O.S. Agua y Energia </option>
-                                <option type="text" th:value="Ninguna"> Ninguna </option>
-                            </select>
-                    </div><br />
-
-                        <h6>Email</h6>
-                        <input name="email" th:value="${email}" type="mail" className="form-control"
-                               placeholder="Example@email.com" />
-                    </div><br />
-
-                    <div name="input">
-                        <h6>Contraseña</h6>
-                        <input name="password" type="password" th:value="${password}" className="form-control"
-                               placeholder="****" />
-                    </div>
-                    <!---<div class="form-group">
-                        <label for="ejemploNacimiento">Fecha de Nacimiento</label>
-                        <input type="number" class="form-control" id="ejemploDNI" name="nacimiento"
-                               aria-describedby="noticiaHelp" placeholder="Ingrese su Fecha de nacimiento" required th:value="${nacimiento}">
-                    </div><br> --->
                     <div class="form-group">
-                        <label for="ejemploGenero">Género. HACER LISTA de opciones</label>
-                        <input type="number" class="form-control" id="ejemploApellido" name="genero"
-                               aria-describedby="noticiaHelp" placeholder="Seleccione su género" required th:value="${genero}">
+                        <label for="ejemploNombre">Nombre</label>
+                        <input type="text" class="form-control" id="ejemploNombre" name="nombre"
+                            placeholder="Ingrese su Nombre" required
+                            th:value="${nombre}">
                     </div>
+    
                     <div class="form-group">
-                        <label for="ejemploObraSocial">Seleccione Obra Social. Traer lista desde el enum</label>
-                        <input type="number" class="form-control" id="ejemploObraSocial" name="obraSocial"
-                               aria-describedby="noticiaHelp" placeholder="Seleccione su Obra Social" required th:value="${obraSocial}">
+                        <label for="ejemploApellido">Apellido</label>
+                        <input type="text" class="form-control" id="ejemploApellido" name="apellido"
+                            placeholder="Ingrese su Apellido" required
+                            th:value="${apellido}">
                     </div>
+    
+                    <div class="form-group">
+                        <label for="ejemploDni">DNI</label>
+                        <input type="text" class="form-control" id="ejemploDni" name="dni"
+                            placeholder="Ingrese su DNI" required
+                            th:value="${dni}">
+                    </div>
+    
                     <div class="form-group">
                         <label for="ejemploDomicilio">Domicilio</label>
                         <input type="text" class="form-control" id="ejemploDomicilio" name="domicilio"
-                               aria-describedby="noticiaHelp" placeholder="Ingrese su Domicilio" required th:value="${domicilio}">
+                            placeholder="Ingrese su Domicilio" required
+                            th:value="${domicilio}">
+                    </div>               
+    
+                    <div class="form-group" >
+                        <label for="ejemploNacimiento">Fecha de Nacimiento</label><br>
+                        <input  type="date" class="form-control" id="ejemploNacimiento" name="nacimiento" 
+                        required th:value="${nacimiento}" />
                     </div>
+    
                     <div class="form-group">
                         <label for="ejemploTelefono">Numero de teléfono</label>
-                        <input type="text" inputmode="numeric" class="form-control" id="ejemploTelefono" name="numeroTelefono"
-                               aria-describedby="noticiaHelp" placeholder="Ingrese su número de teléfono" required th:value="${numeroTelefono}">
+                        <input type="text" inputmode="numeric" class="form-control" id="ejemploTelefono"
+                            name="numeroTelefono" placeholder="Ingrese su número de teléfono"
+                            required th:value="${numeroTelefono}">
                     </div>
                     <div class="form-group">
                         <label for="ejemploCuerpo">Email</label>
-                        <input type="text" class="form-control" id="ejemploTitulo" name="email"
-                               aria-describedby="noticiaHelp" placeholder="Ingrese su e-mail" required th:value="${email}">
+                        <input type="text" class="form-control" id="ejemploEmail" name="email"
+                            placeholder="Ingrese su e-mail" required th:value="${email}">
+                    </div>                               
+    
+                    <div class="form-group">
+                        <label for="ejemploGenero">Género</label>
+                        <select class="form-control" name="genero" required th:value="${genero}">
+                            <option disabled selected>Seleccione su género</option>
+                            <option type="text" th:value="masculino"> Masculino </option>
+                            <option type="text" th:value="femenino"> Femenino </option>
+                            <option type="text" th:value="otro"> Otro </option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="ejemploObraSocial">Obra Social</label>
+                        <select class="form-control" name="obraSocial" required th:value="${obraSocial}">
+                            <option disabled selected>Seleccione su Obra Social</option>
+                            <option type="text" th:value="ninguna"> Ninguna </option>
+                            <option type="text" th:value="MUTUAL_DEL_PERSONAL_DEL_AGUA_Y_LA_ENERGIA_DE_MENDOZA"> Mutual del
+                                Personal del Aguay y la Energía </option>
+                            <option type="text" th:value="OBRA_SOCIAL_FERROVIARIA"> Obra Social Ferroviaria </option>
+                            <option type="text" th:value="OBRA_SOCIAL_YACIMIENTOS_CARBONIFEROS"> Obra Social Yacimientos
+                                Carboníferos </option>
+                            <option type="text" th:value="OBRA_SOCIAL_DE_LA_PREVENCION_Y_LA_SALUD"> Obra Social de la
+                                Prevención y la Salud </option>
+                            <option type="text" th:value="OBRA_SOCIAL_DE_CHOFERES_DE_CAMIONES"> Obra Social de Choferes de
+                                Camiones </option>
+                        </select>
+                    </div>                       
+                    
+                    <div class="form-group">
+                        <label for="ejemploContraseña">Contraseña</label>
+                        <input type="text" class="form-control" id="ejemploContraseña" name="password"
+                            placeholder="Contraseña" required th:value="${password}">
                     </div>
                     <div class="form-group">
-                        <label for="ejemploCuerpo">Contraseña</label>
-                        <input type="text" class="form-control" id="ejemploTitulo" name="password"
-                               aria-describedby="noticiaHelp" placeholder="Contraseña" required th:value="${password}">
-                    </div>
-                    <div class="form-group">
-                        <label for="ejemploCuerpo">Repetir contraseña</label>
-                        <input type="text" class="form-control" id="ejemploTitulo" name="password2"
-                               aria-describedby="noticiaHelp" placeholder="Contraseña" required th:value="${password2}">
+                        <label for="ejemploPassword2">Repetir contraseña</label>
+                        <input type="text" class="form-control" id="ejemploPassword2" name="password2"
+                            placeholder="Contraseña" required th:value="${password2}">
                     </div> <br>
-
-                    <br />
-                    <div name="input">
-                        <h6>Repetir contraseña</h6>
-                        <input name="password2" type="password" th:value="${password2}" className="form-control"
-                               placeholder="****" />
-                    </div>
-                    <br />
 
 
                     <button type="submit" class="btn btn-success">Enviar</button>

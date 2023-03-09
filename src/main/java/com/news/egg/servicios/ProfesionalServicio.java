@@ -53,9 +53,10 @@ public class ProfesionalServicio {
  
     
     @Transactional
-    public void actualizar (Long id, String nombre, String apellido, Integer dni, String domicilio, Double honorario, Long numeroTelefono, String email, String password, String password2, String especialidad) throws MiException {
+    public void actualizar (Long id, String nombre, String apellido, Integer dni, String domicilio, Double honorario, 
+            Long numeroTelefono, String email, String especialidad) throws MiException {
 
-        validar(nombre, apellido, dni, email, password, password2);
+        validarSinPassword(nombre, apellido, dni, email);
 
         Optional<Profesional> respuesta = profesionalRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -68,11 +69,7 @@ public class ProfesionalServicio {
             profesional.setDni(dni);    
             profesional.setEmail(email);
             profesional.setNumeroTelefono(numeroTelefono);
-            
-            profesional.setPassword(password);
-            profesional.setPassword(new BCryptPasswordEncoder().encode(password));
-            profesional.setPassword2(password2);
-        
+                    
             profesional.setRol(Rol.PROFESIONAL);
         
             profesional.setHonorario(honorario);
@@ -80,13 +77,12 @@ public class ProfesionalServicio {
 
             profesionalRepositorio.save(profesional);
         }
-    }
-    
+    }    
     
     
     public Profesional getOne(Long id){
         return profesionalRepositorio.getOne(id);
-    }
+    }  
     
 
     private void validar(String nombre, String apellido, Integer dni, String email, String password, String password2) throws MiException {
@@ -114,6 +110,27 @@ public class ProfesionalServicio {
         if (!password.equals(password2)) {
             throw new MiException("Las contraseñas ingresadas deben ser iguales");
         }
+
+    }
+    
+    private void validarSinPassword(String nombre, String apellido, Integer dni, String email) throws MiException {
+
+        if (nombre.isEmpty() || nombre == null) {
+            throw new MiException("el nombre no puede ser nulo o estar vacío");
+        }
+        
+        if (apellido.isEmpty() || apellido == null) {
+            throw new MiException("El apellido no puede ser nulo o estar vacío");
+        }
+        
+        if (dni == null) {
+            throw new MiException("El dni no puede ser nulo o estar vacío");
+        }
+        
+        
+        if (email.isEmpty() || email == null) {
+            throw new MiException("el email no puede ser nulo o estar vacio");
+        }        
 
     }
 
