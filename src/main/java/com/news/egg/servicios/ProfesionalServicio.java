@@ -56,12 +56,8 @@ public class ProfesionalServicio implements UserDetailsService {
     }
 
     @Transactional
-<<<<<<< Updated upstream
     public void actualizar (Long id, String nombre, String apellido, Integer dni, String domicilio, Double honorario, 
             Long numeroTelefono, String email, String especialidad) throws MiException {
-=======
-    public void actualizar(Long id, String nombre, String apellido, Integer dni, String domicilio, Double honorario, Long numeroTelefono, String email, String password, String password2, String especialidad) throws MiException {
->>>>>>> Stashed changes
 
         validarSinPassword(nombre, apellido, dni, email);
 
@@ -76,15 +72,7 @@ public class ProfesionalServicio implements UserDetailsService {
             profesional.setDni(dni);
             profesional.setEmail(email);
             profesional.setNumeroTelefono(numeroTelefono);
-<<<<<<< Updated upstream
-                    
-=======
 
-            profesional.setPassword(password);
-            profesional.setPassword(new BCryptPasswordEncoder().encode(password));
-            profesional.setPassword2(password2);
-
->>>>>>> Stashed changes
             profesional.setRol(Rol.PROFESIONAL);
 
             profesional.setHonorario(honorario);
@@ -92,21 +80,14 @@ public class ProfesionalServicio implements UserDetailsService {
 
             profesionalRepositorio.save(profesional);
         }
-<<<<<<< Updated upstream
+
     }    
     
     
     public Profesional getOne(Long id){
         return profesionalRepositorio.getOne(id);
-    }  
-    
-=======
-    }
+    }      
 
-    public Profesional getOne(Long id) {
-        return profesionalRepositorio.getOne(id);
-    }
->>>>>>> Stashed changes
 
     private void validar(String nombre, String apellido, Integer dni, String email, String password, String password2) throws MiException {
 
