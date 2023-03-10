@@ -45,12 +45,15 @@
                     <th scope="col">Domicilio</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Honorario</th>
+                    <th scope="col">Especialidad</th>
+                    <th scope="col">Dia</th>
+                    <th scope="col">Desde</th>
+                    <th scope="col">Hasta</th>
                     <th scope="col"></th>
-                    <th scope="col" sec:authorize="hasRole('ADMINISTRADOR')"></th>
+                    <th scope="col" sec:authorize="hasRole('ADMIN')"></th>
                 </tr>
             </thead>
-            <tbody th:each="profesional : ${profesionales}">
+            <tbody th:each="profesional : ${medicos}">
                 <tr>
                     <td scope="row" th:text="${profesional.id}"></td>
                     <td scope="row" th:text="${profesional.nombre}"></td>
@@ -59,7 +62,10 @@
                     <td scope="row" th:text="${profesional.domicilio}"></td>
                     <td scope="row" th:text="${profesional.numeroTelefono}"></td>
                     <td scope="row" th:text="${profesional.email}"></td>
-                    <td scope="row" th:text="${profesional.honorario}"></td>
+                    <td scope="row" th:text="${profesional.especialidad}"></td>
+                    <td scope="row" th:text="${profesional.dia}"></td>
+                    <td scope="row" th:text="${profesional.desde}"></td>
+                    <td scope="row" th:text="${profesional.hasta}"></td>
                     <td  style="width: 25%">
                         <div class="card-body" enctype="multipart/form-data">
                             <!-- Esto es para cargar imagenes
@@ -67,6 +73,7 @@
                                  th:src="@{'/uploads/' + ${noticia.foto}}" th:alt="${noticia.foto}"/>-->
                         </div>
                     </td>
+                    
                     <td>
                         <!-- Esto es para modificar algun valor del profesional.
                         <a class="btn btn-success btn-sm" th:href="@{/noticia/editarNoticia/__${noticia.identificador}__}"><i class="fas fa-feather-alt"> </i> Editar </a>-->

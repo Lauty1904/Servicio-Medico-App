@@ -1,123 +1,152 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+        <title>Medical Services</title>
+        <meta charset="utf-8" />
+        <link rel="icon" href="images/icono.png" />
+        <link rel="stylesheet" type="text/css" href="normalize.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+              integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" href="../static/registro.css" />
+    </head>
 
-<head>
-    <title>Medical Services</title>
-    <meta charset="utf-8" />
-    <link rel="icon" href="images/icono.png" />
-    <link rel="stylesheet" type="text/css" href="normalize.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="../static/registro.css" />
-</head>
+    <body>
+        <nav class="navbar bg-body-tertiary" id="nav">
+            <div class="container-fluid">
+                <a class="navbar-brand">Medical Services</a>
+            </div>
+        </nav>
 
-<body>
-    <nav class="navbar bg-body-tertiary" id="nav">
-        <div class="container-fluid">
-            <a class="navbar-brand">Medical Services</a>
+        <div class="container-form">
+            <form th:action="@{/profesional/registro}" method="POST" enctype="multipart/form-data" class="form">
+
+                <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
+                    <div class="card-body">
+                        <h5 class="card-title">Error ð</h5>
+                        <p class="card-text" th:text="${error}"></p>
+                    </div>
+                </div>
+                <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
+                    <div class="card-body">
+                        <h5 class="card-title">Exito!</h5>
+                        <p class="card-text" th:text="${exito}"></p>
+                    </div>
+                </div>
+
+                <h4>Registro de nuevo profesional</h4>
+
+                <div name="input">
+                    <h6>Nombre</h6>
+                    <input name="nombre" th:value="${nombre}" className="form-control" type="text" />
+                </div><br />
+
+                <div name="input">
+                    <h6>Apellido</h6>
+                    <input name="apellido" th:value="${apellido}" className="form-control" type="text" />
+                </div><br />
+
+                <div name="input">
+                    <h6>DNI</h6>
+                    <input name="dni" th:value="${dni}" className="form-control" type="number" />
+                </div><br />
+
+                <div name="input">
+                    <h6>Domicilio</h6>
+                    <input name="domicilio" th:value="${domicilio}" className="form-control" type="text" />
+                </div>
+                <br />
+                <div name="input">
+                    <br />
+                    <h6>Numero de telefono</h6>
+                    <input name="numeroTelefono" th:value="${numeroTelefono}" className="form-control" type="number" />
+                </div><br />
+                <div name="input">
+
+                    <h6>Email</h6>
+                    <input name="email" th:value="${email}" type="mail" className="form-control"
+                           placeholder="Example@email.com" />
+                </div><br />
+
+                <div name="input">
+                    <br />
+                    <h6>Honorario</h6>
+                    <input name="honorario" th:value="${honorario}" className="form-control" type="number" />
+                </div><br />
+
+                <div name="input">
+                    <h6>Contraseña</h6>
+                    <input name="password" type="password" th:value="${password}" className="form-control"
+                           placeholder="****" />
+                </div>
+                <br />
+                <div name="input">
+                    <h6>Repetir contraseña</h6>
+                    <input name="password2" type="password" th:value="${password2}" className="form-control"
+                           placeholder="****" />
+                </div>
+                <br />
+
+                <div name="input">
+                    <label for="exampleFormControlInput1" class="form-label">Seleccionar Especialidad</label>
+                    <select name="especialidad">
+                        <option type="text" th:value="Pediatria"> Pediatria </option>
+                        <option type="text" th:value="Cardiologia"> Cardiologia </option>
+                        <option type="text" th:value="Clinica"> Clinica </option>
+                    </select>
+                </div>
+                <br />
+
+                <div >
+                    <h4>Ingrese los días y horarios de atención</h4>
+                    <form>
+                        <label for="dia">Día:</label><br>
+                        <select id="dia" name="dia">
+                            <option value="lunes">Lunes</option>
+                            <option value="martes">Martes</option>
+                            <option value="miercoles">Miércoles</option>
+                            <option value="jueves">Jueves</option>
+                            <option value="viernes">Viernes</option>
+                            <option value="sabado">Sábado</option>
+                            <option value="domingo">Domingo</option>
+                        </select><br>
+
+                        <label for="horario">Horarios:</label><br>
+                        <div id="horario">
+                            <input type="text" id="desde" name="desde" placeholder="08:00">
+                            <input type="text" id="hasta" name="hasta" placeholder="10:00">
+                           
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                        <a class="btn btn-danger" href="http://localhost:8080" role="button">Cancelar</a>
+
+                    <div th:if="${error!= null}" class="card text-white bg-danger mb-3 mensajeError" >
+                        <div class="card-body">
+                            <h5 class="card-title">Error ð</h5>
+                            <p class="card-text" th:text="${error}"></p>
+                        </div>
+                    </div>
+                    <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
+                        <div class="card-body">
+                            <h5 class="card-title">Exito!</h5>
+                            <p class="card-text" th:text="${exito}"></p>
+                        </div>
+                    </div>
+
+            </form>
         </div>
-    </nav>
 
-    <div class="container-form">
-        <form th:action="@{/profesional/registro}" method="POST" enctype="multipart/form-data" class="form">
 
-            <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-                <div class="card-body">
-                    <h5 class="card-title">Error ð</h5>
-                    <p class="card-text" th:text="${error}"></p>
-                </div>
-            </div>
-            <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-                <div class="card-body">
-                    <h5 class="card-title">Exito!</h5>
-                    <p class="card-text" th:text="${exito}"></p>
-                </div>
-            </div>
-
-            <h4>Registro de nuevo profesional</h4>
-            
-            <div name="input">
-                <h6>Nombre</h6>
-                <input name="nombre" th:value="${nombre}" className="form-control" type="text" />
-            </div><br />
-            
-            <div name="input">
-                <h6>Apellido</h6>
-                <input name="apellido" th:value="${apellido}" className="form-control" type="text" />
-            </div><br />
-            
-            <div name="input">
-                <h6>DNI</h6>
-                <input name="dni" th:value="${dni}" className="form-control" type="number" />
-            </div><br />
-         
-            <div name="input">
-                <h6>Domicilio</h6>
-                <input name="domicilio" th:value="${domicilio}" className="form-control" type="text" />
-            </div>
-            <br />
-            <div name="input">
-                <br />
-                <h6>Numero de telefono</h6>
-                <input name="numeroTelefono" th:value="${numeroTelefono}" className="form-control" type="number" />
-            </div><br />
-            <div name="input">
-            
-                <h6>Email</h6>
-                <input name="email" th:value="${email}" type="mail" className="form-control"
-                       placeholder="Example@email.com" />
-            </div><br />
-            
-            <div name="input">
-                <br />
-                <h6>Honorario</h6>
-                <input name="honorario" th:value="${honorario}" className="form-control" type="number" />
-            </div><br />
-            
-            <div name="input">
-                <h6>Contraseña</h6>
-                <input name="password" type="password" th:value="${password}" className="form-control"
-                       placeholder="****" />
-            </div>
-            <br />
-            <div name="input">
-                <h6>Repetir contraseña</h6>
-                <input name="password2" type="password" th:value="${password2}" className="form-control"
-                    placeholder="****" />
-            </div>
-            <br />
-
-            <div name="input">
-                <label for="exampleFormControlInput1" class="form-label">Seleccionar Especialidad</label>
-                <select name="especialidad">
-                    <option type="text" th:value="Pediatria"> Pediatria </option>
-                    <option type="text" th:value="Cardiologia"> Cardiologia </option>
-                    <option type="text" th:value="Clinica"> Clinica </option>
-                </select>
-            </div>
-            <br />
-            
-            <button type="submit">Enviar</button>
-            <a href="http://localhost:8080/admin/panelPrincipal"> Cancelar </a>
-        </form>
-    </div>
-
-    <div class="footer">
-        <footer>
-            <p>Coopyrigth 2023.</p>
-        </footer>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
-        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+                integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
 </body>
 
 </html>
+                     

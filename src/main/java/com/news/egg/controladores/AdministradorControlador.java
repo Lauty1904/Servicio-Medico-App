@@ -29,7 +29,7 @@ public class AdministradorControlador {
     @GetMapping("/listaProfesionales")
     public String listarProfesionales(ModelMap modelo) {
         List<Profesional> profesionales = profesionalServicio.listarProfesionales();
-        modelo.addAttribute("profesionales", profesionales);
+        modelo.addAttribute("medicos", profesionales);
         return "lista_profesionales.html";
     }
 

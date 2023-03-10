@@ -1,5 +1,6 @@
 package com.news.egg.servicios;
 
+
 import java.util.Optional;
 import com.news.egg.entidades.Profesional;
 import com.news.egg.enumeraciones.Especialidad;
@@ -20,7 +21,10 @@ public class ProfesionalServicio {
     private ProfesionalRepositorio profesionalRepositorio;
 
     @Transactional
-    public void registrar(String nombre, String apellido, Integer dni, String domicilio, Double honorario, Long numeroTelefono, String email, String password, String password2, String especialidad) throws MiException {
+    public void registrar(String nombre, String apellido, Integer dni, 
+            String domicilio, Double honorario, Long numeroTelefono, 
+            String email, String password, String password2, String especialidad,
+            String dia, String desde, String hasta) throws MiException {
         
         Profesional profesional = new Profesional();
         profesional.setNombre(nombre);
@@ -32,18 +36,22 @@ public class ProfesionalServicio {
         profesional.setEmail(email);
         profesional.setPassword(new BCryptPasswordEncoder().encode(password));
         profesional.setPassword2(new BCryptPasswordEncoder().encode(password2));
-        
      
         profesional.setRol(Rol.PROFESIONAL);
         
         profesional.setHonorario(honorario);
-        profesional.setEspecialidad(Especialidad.valueOf(especialidad));//ver de CAMBIAR los enums por una tabla aparte con Id de especialidad y nombre
-        
+        profesional.setEspecialidad(Especialidad.valueOf(especialidad));
+        profesional.setDia(dia);
+        profesional.setDesde(desde);
+        profesional.setHasta(hasta);
+       
         profesionalRepositorio.save(profesional);
 
-    }
-
-       public List<Profesional> listarProfesionales() {
+        }
+    
+    
+    
+    public List<Profesional> listarProfesionales() {
 
         List<Profesional> profesionales = new ArrayList();
         profesionales = profesionalRepositorio.findAll();
@@ -53,7 +61,10 @@ public class ProfesionalServicio {
  
     
     @Transactional
-    public void actualizar (Long id, String nombre, String apellido, Integer dni, String domicilio, Double honorario, Long numeroTelefono, String email, String password, String password2, String especialidad) throws MiException {
+    public void actualizar (Long id, String nombre, String apellido, Integer dni, 
+            String domicilio, Double honorario, Long numeroTelefono, String email, 
+            String password, String password2, String especialidad, 
+            String dia, String desde, String hasta) throws MiException {
 
         validar(nombre, apellido, dni, email, password, password2);
 
@@ -78,6 +89,10 @@ public class ProfesionalServicio {
             profesional.setHonorario(honorario);
             profesional.setEspecialidad(Especialidad.valueOf(especialidad));//cambiar desde html - Ver de cambiar este ENUM por una tabla de especialidades
 
+            profesional.setDia(dia);
+            profesional.setDesde(desde);
+            profesional.setHasta(hasta);
+            
             profesionalRepositorio.save(profesional);
         }
     }
@@ -103,7 +118,6 @@ public class ProfesionalServicio {
             throw new MiException("El dni no puede ser nulo o estar vacío");
         }
         
-        
         if (email.isEmpty() || email == null) {
             throw new MiException("el email no puede ser nulo o estar vacio");
         }
@@ -116,5 +130,5 @@ public class ProfesionalServicio {
         }
 
     }
-
 }
+    
