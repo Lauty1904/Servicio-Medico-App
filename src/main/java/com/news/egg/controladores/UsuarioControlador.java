@@ -1,5 +1,3 @@
-
-
 package com.news.egg.controladores;
 
 import com.news.egg.excepciones.MiException;
@@ -27,19 +25,17 @@ public class UsuarioControlador {
     }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam (required = false) String nombre, @RequestParam (required = false) String apellido, @RequestParam (required = false) Integer dni, @RequestParam (required = false) String domicilio, 
-            @RequestParam (required = false) String email, @RequestParam (required = false) String password, @RequestParam (required = false) String password2, @RequestParam (required = false) Long numeroTelefono, 
-            @RequestParam (required = false) String rol, ModelMap modelo) { 
-        
-        
-        try {               
-                usuarioservicio.registrarNuevoUsuario(nombre, apellido, dni, domicilio, email, password, password2, numeroTelefono, rol);
-                
-                modelo.put("Exito", "Usuario registrado correctamente");                             
-                
+    public String registro(@RequestParam(required = false) String nombre, @RequestParam(required = false) String apellido, @RequestParam(required = false) Integer dni, @RequestParam(required = false) String domicilio,
+            @RequestParam(required = false) String email, @RequestParam(required = false) String password, @RequestParam(required = false) String password2, @RequestParam(required = false) Long numeroTelefono,
+            @RequestParam(required = false) String rol, ModelMap modelo) {
+
+        try {
+            usuarioservicio.registrarNuevoUsuario(nombre, apellido, dni, domicilio, email, password, password2, numeroTelefono, rol);
+
+            modelo.put("exito", "Usuario registrado correctamente");
+
         } catch (MiException ex) {
-            
-            modelo.put("Error", ex.getMessage());
+            modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);
             modelo.put("apellido", apellido);
             modelo.put("dni", dni);
@@ -47,16 +43,40 @@ public class UsuarioControlador {
             modelo.put("email", email);
             modelo.put("numero de contacto", numeroTelefono);
             modelo.put("rol", rol);
-            
-            return "UsuarioForm(camo).html";
+            return "registro_paciente.html";
         }
-            
-            return "registro_paciente.html";           
-                   
-
+        return "panel.admin.html";
     }
 
+    @GetMapping("/editar_perfil")
+    public String modificar() {
+        return "panel_editar_admin.html";
+    }
 
-    
-    
+    @PostMapping("/perfil_editado")
+    public String modificado(@RequestParam(required = false) Long id, @RequestParam(required = false) String nombre, @RequestParam(required = false) String apellido, @RequestParam(required = false) Integer dni, @RequestParam(required = false) String domicilio,
+            @RequestParam(required = false) String email, @RequestParam(required = false) String password, @RequestParam(required = false) String password2, @RequestParam(required = false) Long numeroTelefono,
+            @RequestParam(required = false) String rol, ModelMap modelo) {
+
+        try {
+            usuarioservicio.modificarUsuario(id, nombre, apellido, dni, domicilio, email, password, password2, numeroTelefono, rol);
+
+            modelo.put("exito", "Usuario registrado correctamente");
+
+        } catch (MiException ex) {
+
+            modelo.put("error", ex.getMessage());
+            modelo.put("nombre", nombre);
+            modelo.put("apellido", apellido);
+            modelo.put("dni", dni);
+            modelo.put("domicilio", domicilio);
+            modelo.put("email", email);
+            modelo.put("numero de contacto", numeroTelefono);
+            modelo.put("rol", rol);
+
+            return "panel_editar_admin.html";
+        }
+        return "registro_paciente.html";
+    }
+
 }

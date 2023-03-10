@@ -23,21 +23,23 @@
         </nav>
 
         <div class="container-form">
-            <form class="form">
+
+            <form class="form" th:action="@{/logincheck}" method="POST">
                 <h4>Por favor, ingrese sus datos</h4>
                 <div name="input">
                     <h6>Email</h6>
-                    <input type="mail" placeholder="Example@email.com" />
+                    <input name="email" type="mail" placeholder="Example@email.com" />
                 </div>
                 <div name="input">
                     <h6>Contraseña</h6>
-                    <input type="password" placeholder="**********" />
+                    <input name="password" type="password" placeholder="**********" />
                 </div>
                 <br />
 
                 <button type="submit">Enviar</button>
                 <a href="http://localhost:8080"> Cancelar </a>
             </form>
+
         </div>
 
         <div class="footer">

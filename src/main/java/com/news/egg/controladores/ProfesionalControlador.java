@@ -47,16 +47,26 @@ public class ProfesionalControlador {
         @RequestParam(required = false) String hasta,
             ModelMap modelo) {
         
-        try {
-            
-            profesionalServicio.registrar(nombre, apellido, dni, domicilio, 
-                    honorario, numeroTelefono, email, password, password2, 
-                    especialidad, dia, desde, hasta);
-            modelo.put("EXITO!", "El médico fue cargado correctamente!");
+        try {            
+            profesionalServicio.registrar(nombre, apellido, dni, domicilio, honorario, numeroTelefono, email, password, password2, especialidad);
+
+            modelo.put("exito", "El médico fue cargado correctamente!");
 
         } catch (MiException ex) {
-            modelo.put("ERROR", ex.getMessage());
-            return "profesional_form.html";  // volvemos a cargar el formulario.
+            
+            modelo.put("error", ex.getMessage());
+            modelo.put("nombre",nombre);
+            modelo.put("apellido",apellido);
+            modelo.put("dni",dni);
+            modelo.put("domicilio",domicilio);
+            modelo.put("honorario",honorario);
+            modelo.put("numero de telefono",numeroTelefono);
+            modelo.put("email",email);
+            modelo.put("password",password);
+            modelo.put("password2",password2);
+            modelo.put("especialidad",especialidad);
+            
+            return "registro_profesional.html";  // volvemos a cargar el formulario.
         }
         return "panel_admin.html";
     }
@@ -71,19 +81,23 @@ public class ProfesionalControlador {
         // que se obtuvo desde el metodo getOne()
         // y eso se muestra con la estructura de vista que llamamos en el return
         // notimodificar_form.
-        return "profesional_modificar_form.html";
+        
+        return "profesional_modificar.html";
     }
     
+
      @PostMapping("/modificar/{id}")
     public String modificar(@PathVariable Long id, String nombre, String apellido, Integer dni, 
             String domicilio, Double honorario, Long numeroTelefono, String email, 
             String password, String password2, String especialidad, 
             String dia, String desde, String hasta, 
             ModelMap modelo) {
+
         List<Profesional> profesionales = profesionalServicio.listarProfesionales();
         modelo.addAttribute("Profesionales", profesionales);
         return "redirect:../lista";
     }
+
     
      @GetMapping("/listar")
     public String listar(ModelMap modelo){ //recibe un ModelMap como parametro
@@ -95,7 +109,5 @@ public class ProfesionalControlador {
         
         return "lista_profesionales.html";
     }
-    
-    
-    
+
 }
