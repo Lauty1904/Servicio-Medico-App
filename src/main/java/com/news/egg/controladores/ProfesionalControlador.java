@@ -46,11 +46,8 @@ public class ProfesionalControlador {
         
         try {            
             profesionalServicio.registrar(nombre, apellido, dni, domicilio, honorario, numeroTelefono, email, password, password2, especialidad);
-<<<<<<< Updated upstream
+
             modelo.put("exito", "El médico fue cargado correctamente!");
-=======
-            modelo.put("EXITO!", "El profesional fue cargado correctamente.");
->>>>>>> Stashed changes
 
         } catch (MiException ex) {
             
@@ -92,8 +89,5 @@ public class ProfesionalControlador {
         //profesionalServicio.actualizar(Long.MIN_VALUE, foto, cuerpo, Integer.SIZE, titulo, id, foto, foto, Double.NaN); //arrreglar esto
         return "redirect:../lista";
     }
-    
-    
-    
-    
+        
 }

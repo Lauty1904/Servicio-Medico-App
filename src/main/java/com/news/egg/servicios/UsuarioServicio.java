@@ -6,11 +6,8 @@ import com.news.egg.excepciones.MiException;
 import com.news.egg.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< Updated upstream
 import java.util.Optional;
-=======
 import javax.servlet.http.HttpSession;
->>>>>>> Stashed changes
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -61,7 +58,6 @@ public class UsuarioServicio implements UserDetailsService {
         return usuariosRegistrados;
     }
 
-<<<<<<< Updated upstream
     @Transactional
     public void modificarUsuario(Long id, String nombre, String apellido, Integer dni, String domicilio, String email,
             String password, String password2, Long numeroTeléfono, String rol) throws MiException {
@@ -90,30 +86,6 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
-        Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
-
-        List<GrantedAuthority> permisos = new ArrayList();
-
-        GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
-
-        permisos.add(p);
-
-        if (usuario != null) {
-
-            return new User(usuario.getEmail(), usuario.getPassword(), permisos);
-
-        } else {
-
-            return null;
-        }
-
-    }
-
-=======
->>>>>>> Stashed changes
     private void validar(String nombre, String apellido, Integer dni, String domicilio, String email, String password, String password2, Long numeroTelefono) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
@@ -149,8 +121,6 @@ public class UsuarioServicio implements UserDetailsService {
         }
     }
 
-<<<<<<< Updated upstream
-=======
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
@@ -179,5 +149,4 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
->>>>>>> Stashed changes
 }
