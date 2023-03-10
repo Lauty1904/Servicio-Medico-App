@@ -67,11 +67,13 @@ public class AdministradorControlador {
 
     @PostMapping("/modificarProfesional/{id}")
     public String modificarProfesional(@PathVariable Long id, String nombre, String apellido, Integer dni, String domicilio, Double honorario,
-            Long numeroTelefono, String email, String especialidad, ModelMap modelo) {
+            Long numeroTelefono, String email, String especialidad, 
+            String dia, String desde, String hasta, ModelMap modelo) {
+        
 
         try {
             profesionalServicio.actualizar(id, nombre, apellido, dni, domicilio, honorario,
-                    numeroTelefono, email, especialidad);
+                    numeroTelefono, email, especialidad, dia, desde, hasta);
             
             //modelo.addAttribute("Profesionales", profesionales);
             //profesionalServicio.actualizar(Long.MIN_VALUE, foto, cuerpo, Integer.SIZE, titulo, id, foto, foto, Double.NaN); //arrreglar esto

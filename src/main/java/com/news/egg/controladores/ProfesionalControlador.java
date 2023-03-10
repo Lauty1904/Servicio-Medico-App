@@ -48,7 +48,9 @@ public class ProfesionalControlador {
             ModelMap modelo) {
         
         try {            
-            profesionalServicio.registrar(nombre, apellido, dni, domicilio, honorario, numeroTelefono, email, password, password2, especialidad);
+            profesionalServicio.registrar(nombre, apellido, dni, domicilio, 
+                    honorario, numeroTelefono, email, password, password2, 
+                    especialidad, dia, desde, hasta);
 
             modelo.put("exito", "El médico fue cargado correctamente!");
 
