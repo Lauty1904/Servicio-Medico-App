@@ -1,11 +1,8 @@
 
 package com.news.egg.controladores;
 
-
-import com.news.egg.entidades.Profesional;
 import com.news.egg.excepciones.MiException;
 import com.news.egg.servicios.ProfesionalServicio;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -80,14 +77,6 @@ public class ProfesionalControlador {
         // notimodificar_form.
         
         return "profesional_modificar.html";
-    }
-    
-    @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable String id, String titulo, String cuerpo, String foto, ModelMap modelo) {
-        List<Profesional> profesionales = profesionalServicio.listarProfesionales();
-        modelo.addAttribute("Profesionales", profesionales);
-        //profesionalServicio.actualizar(Long.MIN_VALUE, foto, cuerpo, Integer.SIZE, titulo, id, foto, foto, Double.NaN); //arrreglar esto
-        return "redirect:../lista";
     }
         
 }
