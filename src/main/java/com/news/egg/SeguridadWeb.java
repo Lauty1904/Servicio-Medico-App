@@ -21,8 +21,7 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
        auth. userDetailsService(usuarioServicio)
-               .passwordEncoder(new BCryptPasswordEncoder());
-       
+               .passwordEncoder(new BCryptPasswordEncoder());       
     }
 
     
@@ -31,17 +30,18 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
+                        .antMatchers("/admin/*").hasRole("ADMIN")
                         .antMatchers("/css/*", "/js/*", "/img/*", "/**")
                         .permitAll()
                 .and().formLogin()
-                        .loginPage("/login")
+                        .loginPage("/login") //Aca colocamos la pagina de logueo.
                         .loginProcessingUrl("/logincheck")
                         .usernameParameter("email")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/inicio")
+                        .defaultSuccessUrl("/admin/panelPrincipal") //Ojo con esto, va a mandar a todos a inicio cuando se loguee.
                         .permitAll() 
                 .and().logout()
-                        .logoutUrl("logout")
+                        .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
                         .permitAll()
                 .and().csrf()

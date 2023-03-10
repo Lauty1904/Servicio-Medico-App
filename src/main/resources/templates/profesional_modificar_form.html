@@ -18,7 +18,7 @@
   
         
         <div>      
-            <form th:action="@{/profesional/modificar/__${noticia.id}__}" method="POST">
+            <form th:action="@{/profesional/modificar/__${usuario.id}__}" method="POST">
                 <input hidden th:value= "${id}" name="id">
 
                      
@@ -30,9 +30,78 @@
                 <div class="mb-3">
                     <label>Apellido</label> 
                     <label for="exampleFormControlTextarea1" class="form-label">Apellido</label>
-                    <input th:value="${profesional.apellido}" name="apellido" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>       
+                    <input th:value="${profesional.apellido}" name="apellido" class="form-control" id="exampleFormControlTextarea1" rows="3">      
                 </div>
-                    
+                 
+                <div name="input">
+                    <h6>DNI</h6>
+                    <label >DNI</label>
+                    <input th:value="${profesional.dni}" type="number" name="dni" placeholder="DNI" class="form-control" id="exampleFormControlInput1">
+                </div>
+                   
+
+                <div name="input">
+                    <h6>Domicilio</h6>
+                    <input th:value="${profesional.domicilio}" type="text" name="domicilio" placeholder="Domicilio" class="form-control" id="exampleFormControlInput1">
+                </div>
+                <br />
+                
+                <div name="input">
+                    <h6>Numero de telefono</h6>
+                    <input th:value="${profesional.numeroTelefono}" type="number" name="numeroTelefono" placeholder="Telefono" class="form-control" id="exampleFormControlInput1">
+                </div><br />
+                
+                <div name="input">
+                    <h6>Email</h6>
+                    <input th:value="${profesional.email}" type="email" name="email" placeholder="Email" class="form-control" id="exampleFormControlInput1">
+                </div><br />
+
+                <div name="input">
+                    <br />
+                    <h6>Honorario</h6>
+                    <input th:value="${profesional.honorario}" type="number" name="honoriario" placeholder="Honorarios" class="form-control" id="exampleFormControlInput1">
+                </div><br />
+
+                <div name="input">
+                    <h6>Contraseña</h6>
+                    <input th:value="${profesional.password}" type="password" name="password" placeholder="Password" class="form-control" id="exampleFormControlInput1">                     
+                </div>
+                <br />
+                
+                <div name="input">
+                    <h6>Repetir contraseña</h6>
+                    <input th:value="${profesional.password2}" type="password" name="password2" placeholder="Repetir contrasena" class="form-control" id="exampleFormControlInput1">
+                </div>
+                <br />
+
+                <div name="input">
+                    <label for="exampleFormControlInput1" class="form-label">Seleccionar Especialidad</label>
+                    <select name="especialidad">
+                        <option type="text" th:value="${especialidad.Pediatria}"> Pediatria </option>
+                        <option type="text" th:value="${especialidad.Cardiologia}"> Cardiologia </option>
+                        <option type="text" th:value="${especialidad.Clinica}"> Clinica </option>
+                    </select>
+                </div>
+                <br />
+
+                <div >
+                    <h4>Ingrese días y horarios de atención</h4>
+                    <form>
+                        <label for="dia">Día:</label><br>
+                        <select id="dia" name="dia">
+                            <option value="lunes">Lunes</option>
+                            <option value="martes">Martes</option>
+                            <option value="miercoles">Miércoles</option>
+                            <option value="jueves">Jueves</option>
+                            <option value="viernes">Viernes</option>
+                            <option value="sabado">Sábado</option>
+                            <option value="domingo">Domingo</option>
+                        </select><br>
+
+                        <label for="horario">Horarios:</label><br>
+                        <div id="horario">
+                            <input type="text" id="desde" name="desde" placeholder="08:00">
+                            <input type="text" id="hasta" name="hasta" placeholder="10:00">
                        
                                     
 

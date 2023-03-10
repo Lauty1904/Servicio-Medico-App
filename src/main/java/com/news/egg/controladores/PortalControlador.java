@@ -12,13 +12,11 @@ public class PortalControlador {
 
     @GetMapping("/")
     public String index() {
-
         return "index.html";
     }
 
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, ModelMap modelo) {
-
         if (error != null) {
             modelo.put("Error", "Usuario o contraseña inválidos");
         }

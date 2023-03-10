@@ -6,6 +6,8 @@ import com.news.egg.excepciones.MiException;
 import com.news.egg.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,9 +18,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
-public class UsuarioServicio implements UserDetailsService{ 
+public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
@@ -38,6 +42,7 @@ public class UsuarioServicio implements UserDetailsService{
         usuario.setNumeroTelefono(numeroTeléfono);
         usuario.setRol(Rol.valueOf(rol.toUpperCase()));
         usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+        usuario.setPassword2(new BCryptPasswordEncoder().encode(password2));
 
         usuarioRepositorio.save(usuario);
 
@@ -53,7 +58,35 @@ public class UsuarioServicio implements UserDetailsService{
         return usuariosRegistrados;
     }
 
-    private void validar(String nombre, String apellido, Integer dni, String domicilio, String email, String password, String password2,Long numeroTelefono) throws MiException {
+    @Transactional
+    public void modificarUsuario(Long id, String nombre, String apellido, Integer dni, String domicilio, String email,
+            String password, String password2, Long numeroTeléfono, String rol) throws MiException {
+
+        validar(nombre, apellido, dni, domicilio, email, password, password2, numeroTeléfono);
+
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+
+            Usuario usuario = respuesta.get();
+
+            usuario.setNombre(nombre);
+            usuario.setApellido(apellido);
+            usuario.setDni(dni);
+            usuario.setDomicilio(domicilio);
+            usuario.setEmail(email);
+            usuario.setNumeroTelefono(numeroTeléfono);
+            usuario.setRol(Rol.valueOf(rol.toUpperCase()));
+            usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+            usuario.setPassword2(new BCryptPasswordEncoder().encode(password2));
+
+            usuarioRepositorio.save(usuario);
+
+        }
+
+    }
+
+    private void validar(String nombre, String apellido, Integer dni, String domicilio, String email, String password, String password2, Long numeroTelefono) throws MiException {
 
         if (nombre.isEmpty() || nombre == null) {
             throw new MiException("El nombre del usuario no puede ser nulo ni vacio");
@@ -66,7 +99,7 @@ public class UsuarioServicio implements UserDetailsService{
         if (dni == null) {
             throw new MiException("El dni no puede ser nulo ni vacio");
         }
-        
+
         if (numeroTelefono == null) {
             throw new MiException("El número de contacto no puede ser nulo ni vacio");
         }
@@ -90,24 +123,30 @@ public class UsuarioServicio implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        
+
         Usuario usuario = usuarioRepositorio.buscarPorEmail(email);
-        
-        List <GrantedAuthority> permisos = new ArrayList();
-        
+
+        List<GrantedAuthority> permisos = new ArrayList();
+
         GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
-        
+
         permisos.add(p);
-        
-        if(usuario != null){
-            
-            return new User(usuario.getEmail(), usuario.getPassword(),permisos);
-        
-        }else{
-            
+
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+
+        HttpSession session = attr.getRequest().getSession(true);
+
+        session.setAttribute("usuariosession", usuario);
+
+        if (usuario != null) {
+
+            return new User(usuario.getEmail(), usuario.getPassword(), permisos);
+
+        } else {
+
             return null;
         }
-        
+
     }
 
 }
