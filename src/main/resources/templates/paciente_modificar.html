@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <h1 class="navbar-nav mr-auto" id="navbarDropdown" aria-expanded="false" style="float: right">
-                <a class="navbar-brand">Actualizar Perfil Profesional</a>
+                <a class="navbar-brand">Actualizar Perfil</a>
             </h1>
 
         </div>
@@ -29,56 +29,60 @@
 
 
     <div>
-        <form th:action="@{/admin/modificarProfesional/__${profesional.id}__}" method="POST"
+        <form th:action="@{/paciente/modificar/__${paciente.id}__}" method="POST"
             enctype="multipart/form-data">
             <div class="card text-white bg-dark mb-3 position-absolute top-50 start-50 translate-middle"
                 style="max-width: 35rem;">
                 <div class="card-body">
 
-                    <input hidden th:value="${id}" name="id">
-
-                    <input hidden th:value="${profesional.especialidad}" name="especialidad">
+                    <input hidden th:value="${id}" name="id">                    
 
                     <div class="form-group">
                         <label for="ejemploNombre">Nombre</label>
                         <input type="text" class="form-control" id="ejemploNombre" name="nombre"
-                            th:value="${profesional.nombre}">
+                            th:value="${paciente.nombre}">
                     </div>
 
                     <div class="form-group">
                         <label for="ejemploApellido">Apellido</label>
                         <input type="text" class="form-control" id="ejemploApellido" name="apellido"
-                            th:value="${profesional.apellido}">
+                            th:value="${paciente.apellido}">
                     </div>
 
                     <div class="form-group">
                         <label for="ejemploDni">DNI</label>
                         <input type="text" class="form-control" id="ejemploDni" name="dni"
-                            th:value="${profesional.dni}">
+                            th:value="${paciente.dni}">
                     </div>
 
                     <div class="form-group">
                         <label for="ejemploDomicilio">Domicilio</label>
                         <input type="text" class="form-control" id="ejemploDomicilio" name="domicilio"
-                            th:value="${profesional.domicilio}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ejemploHonorario">Honorarios</label><br>
-                        <input type="text" class="form-control" id="ejemploHonorario" name="honorario"
-                            th:value="${profesional.honorario}" />
+                            th:value="${paciente.domicilio}">
                     </div>
 
                     <div class="form-group">
                         <label for="ejemploTelefono">Numero de teléfono</label>
                         <input type="text" inputmode="numeric" class="form-control" id="ejemploTelefono"
-                            name="numeroTelefono" th:value="${profesional.numeroTelefono}">
+                            name="numeroTelefono" th:value="${paciente.numeroTelefono}">
                     </div>
 
                     <div class="form-group">
-                        <label for="ejemploCuerpo">Email</label>
+                        <label for="ejemploGenero">Género</label>
+                        <input type="text" class="form-control" id="ejemploGenero" name="genero"
+                            th:value="${paciente.email}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ejemploObraSocial">Obra Social</label>
+                        <input type="text" class="form-control" id="ejemploObraSocial" name="obraSocial"
+                            th:value="${paciente.email}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ejemploEmail">Email</label>
                         <input type="text" class="form-control" id="ejemploEmail" name="email"
-                            th:value="${profesional.email}">
+                            th:value="${paciente.email}">
                     </div>
 
                     <button type="submit" class="btn btn-success">Actualizar</button>

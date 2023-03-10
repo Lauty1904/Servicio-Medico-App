@@ -49,8 +49,7 @@ public class ProfesionalServicio {
         profesionales = profesionalRepositorio.findAll();
         return profesionales;
     }
-    
- 
+     
     
     @Transactional
     public void actualizar (Long id, String nombre, String apellido, Integer dni, String domicilio, Double honorario, 
