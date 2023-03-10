@@ -39,10 +39,15 @@ public class ProfesionalControlador {
         @RequestParam(required = false) String password, 
         @RequestParam(required = false) String password2,
         @RequestParam(required = false) String especialidad,
+        @RequestParam(required = false) String dia,
+        @RequestParam(required = false) String desde,
+        @RequestParam(required = false) String hasta,
             ModelMap modelo) {
         
         try {            
-            profesionalServicio.registrar(nombre, apellido, dni, domicilio, honorario, numeroTelefono, email, password, password2, especialidad);
+            profesionalServicio.registrar(nombre, apellido, dni, domicilio, 
+                    honorario, numeroTelefono, email, password, password2, 
+                    especialidad, dia, desde, hasta);
 
             modelo.put("exito", "El médico fue cargado correctamente!");
 
@@ -65,18 +70,29 @@ public class ProfesionalControlador {
         return "panel_admin.html";
     }
         
-    @GetMapping("/modificar/{id}")
-    public String modificar(@PathVariable Long id, ModelMap modelo){
-        
-        //para que los datos que ya estan cargados aparezcan listados usamos modelo.put
-        //es decir, inyectamos los datos del profesional
-      modelo.put("Profesional", profesionalServicio.getOne(id)); //esto pone el mensaje en la vista!
-        // a traves de modelo.put pasamos como llave a "Profesional" conteniendo el objeto que tenga el id 
-        // que se obtuvo desde el metodo getOne()
-        // y eso se muestra con la estructura de vista que llamamos en el return
-        // notimodificar_form.
-        
-        return "profesional_modificar.html";
+   @PostMapping("/modificar/{id}")
+    public String modificar(@PathVariable Long id, String nombre, String apellido, Integer dni, 
+            String domicilio, Double honorario, Long numeroTelefono, String email, 
+            String especialidad, 
+            String dia, String desde, String hasta, 
+            ModelMap modelo) {
+
+        List<Profesional> profesionales = profesionalServicio.listarProfesionales();
+        modelo.addAttribute("Profesionales", profesionales);
+        return "redirect:../lista";
     }
+
+    
+     @GetMapping("/listar")
+    public String listar(ModelMap modelo){ //recibe un ModelMap como parametro
+        //va a traernos una lista de profesiionales y rellenarla con los datos que nos trae nuestro service
+        List<Profesional> lista = profesionalServicio.listarProfesionales();
+        //luego inyectamos con nuesto modelo nuestros atributos bajo el nombre de llave "Lista"
+        //vamos a enviar la lista de noticias dentro de lista
+        modelo.addAttribute("lista", lista); //esto manda la info al html
+
         
+        return "lista_profesionales.html";
+    }
+
 }

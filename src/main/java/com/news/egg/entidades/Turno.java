@@ -1,7 +1,7 @@
 package com.news.egg.entidades;
 
+import com.news.egg.enumeraciones.Rol;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,8 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "Turno")
-public class Turno {
+public class Turno{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -26,24 +25,14 @@ public class Turno {
     private boolean status = false;
     private int calificacion;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "Fecha_Turno", nullable = false)
     private Date fechaTurno;
-
-    @Column(name = "Hora_Turno", nullable = false)
-    @Temporal(TemporalType.TIME)
     private Date horaTurno;
-
-    @Column(name = "Fecha_ALta", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Profesional", nullable = false)
     private Profesional profesional;
     
     @OneToOne
-    @JoinColumn(name = "Paciente", nullable = false)
     private Paciente paciente;
 
     //Constructores
@@ -52,16 +41,18 @@ public class Turno {
     public Turno() {
     }
 
-    public Turno(Long IdTurno, boolean status, int calificacion, Date fechaTurno, Date horaTurno, Date fechaAlta, Profesional profesional, Paciente pacientes) {
+    public Turno(Long IdTurno, int calificacion, Date fechaTurno, Date horaTurno, Date fechaAlta, Profesional profesional, Paciente paciente) {
         this.IdTurno = IdTurno;
-        this.status = status;
         this.calificacion = calificacion;
         this.fechaTurno = fechaTurno;
         this.horaTurno = horaTurno;
         this.fechaAlta = fechaAlta;
         this.profesional = profesional;
-        this.paciente = pacientes;
+        this.paciente = paciente;
     }
+
+    
+    
 
     public Long getIdTurno() {
         return IdTurno;
@@ -126,5 +117,6 @@ public class Turno {
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
+
     
 }

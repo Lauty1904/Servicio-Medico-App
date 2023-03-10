@@ -46,13 +46,18 @@
                     <th scope="col">Telefono</th>
                     <th scope="col">Email</th>
                     <th scope="col">Especialidad</th>
+
+                    <th scope="col">Dia</th>
+                    <th scope="col">Desde</th>
+                    <th scope="col">Hasta</th>
                     <th scope="col">Honorario</th>
                     <th scope="col">Acciones</th>
+
                     <th scope="col"></th>
                     <th scope="col" sec:authorize="hasRole('ADMIN')"></th>
                 </tr>
             </thead>
-            <tbody th:each="profesional : ${profesionales}">
+            <tbody th:each="profesional : ${medicos}">
                 <tr>
                     <td scope="row" th:text="${profesional.id}"></td>
                     <td scope="row" th:text="${profesional.nombre}"></td>
@@ -62,6 +67,11 @@
                     <td scope="row" th:text="${profesional.numeroTelefono}"></td>
                     <td scope="row" th:text="${profesional.email}"></td>
                     <td scope="row" th:text="${profesional.especialidad}"></td>
+
+                    <td scope="row" th:text="${profesional.dia}"></td>
+                    <td scope="row" th:text="${profesional.desde}"></td>
+                    <td scope="row" th:text="${profesional.hasta}"></td>
+
                     <td scope="row" th:text="${profesional.honorario}"></td>
                     <td>                        
                         <a class="btn btn-secondary btn-sm" th:href="@{/admin/modificarProfesional/__${profesional.id}__}"><i class="fas fa-feather-alt"> </i> Dar de Baja </a>
@@ -70,6 +80,7 @@
                         <a class="btn btn-success btn-sm" th:href="@{/admin/modificarProfesional/__${profesional.id}__}"><i class="fas fa-feather-alt"> </i> Editar </a>
                     </td>
                     
+
                     <td  style="width: 25%">
                         <div class="card-body" enctype="multipart/form-data">
                             <!-- Esto es para cargar imagenes
@@ -78,6 +89,8 @@
                         </div>
                     </td>
                     
+
+                  
                     <!--<td sec:authorize="hasRole('ADMINISTRADOR')">
                     <!--Version para eliminar SIN popUp-->
                     <!--<a class="btn btn-danger btn-sm" th:href="@{/noticia/eliminarNoticia/__${noticia.identificador}__}"><i class="fas fa-feather-alt"> </i> Eliminar </a>
