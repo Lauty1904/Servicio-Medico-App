@@ -38,8 +38,13 @@ public class UsuarioControlador {
                 modelo.put("exito", "Usuario registrado correctamente");                             
                 
         } catch (MiException ex) {
+<<<<<<< Updated upstream
             
             modelo.put("error", ex.getMessage());
+=======
+         
+            modelo.put("Error", ex.getMessage());
+>>>>>>> Stashed changes
             modelo.put("nombre", nombre);
             modelo.put("apellido", apellido);
             modelo.put("dni", dni);
@@ -47,6 +52,7 @@ public class UsuarioControlador {
             modelo.put("email", email);
             modelo.put("numero de contacto", numeroTelefono);
             modelo.put("rol", rol);
+<<<<<<< Updated upstream
             
             return "registro_paciente.html";
         }
@@ -86,14 +92,13 @@ public class UsuarioControlador {
             modelo.put("rol", rol);
             
             return "panel_editar_admin.html";
+=======
+
+            return "UsuarioForm(camo).html";
+>>>>>>> Stashed changes
         }
-            
-            return "registro_paciente.html";           
-                   
-
+        return "registro_paciente.html";
     }
-
-
-    
+   
     
 }

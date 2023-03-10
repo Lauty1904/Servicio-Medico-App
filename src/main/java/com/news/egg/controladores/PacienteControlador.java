@@ -42,6 +42,7 @@ public class PacienteControlador {
         
         try {            
             pacienteServicio.registrarNuevoPaciente(nombre, apellido, dni, domicilio, nacimiento, numeroTelefono, genero, obraSocial, email, password, password2);
+
             modelo.put("exito", "Paciente registrado correctamente");
 
         } catch (MiException ex) {
